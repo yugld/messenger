@@ -2,8 +2,8 @@
   "name": "middle.messenger.praktikum.yandex",
   "version": "1.0.0",
   "description": "Messenger for first step",
-  "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "dev": "parcel index.pug",
     "build": "parcel build index.pug"
   },
