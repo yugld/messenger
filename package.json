@@ -16,9 +16,9 @@
   },
   "homepage": "https://github.com/yugld/middle.messenger.praktikum.yandex#readme",
   "scripts": {
-    "dev": "parcel index.pug",
-    "build": "parcel build index.pug",
-    "start": "parcel build index.pug && node server.js"
+    "dev": "parcel static/index.pug",
+    "build": "parcel build static/index.pug",
+    "start": "parcel build static/index.pug && node server.js"
   },
   "devDependencies": {
     "@parcel/transformer-pug": "^2.8.2",
