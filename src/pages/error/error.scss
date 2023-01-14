@@ -1,0 +1,25 @@
+.page-chats {
+	display:flex;
+}
+.error {
+  margin: 0 auto;
+  text-align: center;
+
+  &_title__number {
+    margin-top: 280px;
+    font-size: 40px;
+  }
+
+  &__message {
+    margin-top: 20px;
+    font-size: 20px;
+  }
+
+  &__link-back {
+    display: block;
+    font-size: 11px;
+    text-decoration: none;
+    color: $color__secondary;
+    margin-top: 69px;
+  }
+}

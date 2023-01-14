@@ -1,0 +1,18 @@
+extends ../template.pug
+include ../../components/button/button.pug
+include ../../components/input/input.pug
+
+block templateVar 
+  - const pageTitle = "Вход"
+
+block content
+    .page-login.block-center
+        .login_form
+            h1.login_form__title Вход
+            form.login_form__inputs 
+                +input("text", "Логин").login
+                +input("text", "Пароль").password
+            .login_form__buttons
+                +button('Авторизоваться').login_form__btn
+                    a(href="#").login_form__link-login
+                a.login_form__link-signup(href="#") Нет аккаунта?

@@ -1,0 +1,26 @@
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Navigation page
+    link(rel="stylesheet" src='./style/main.scss')
+  body
+    .page-navigation
+      h1 Navigation
+      nav.menu_navigation__main
+        ul 
+          li
+            a.login(href = './pages/login/login.pug') Login
+          li
+            a.signin(href = './pages/signin/signin.pug') Signup
+          li
+            a.chats(href = './pages/chats/chats.pug') Chat
+          li
+            a.profile(href = './pages/profile/profile.pug') Profile
+          li
+            a.error__404(href = './pages/error/error404.pug') Error 404
+          li
+            a.error__500(href = './pages/error/error500.pug') Error 500
+    script(type="module" src="./index.js")

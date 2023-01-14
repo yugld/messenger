@@ -16,12 +16,14 @@
   },
   "homepage": "https://github.com/yugld/middle.messenger.praktikum.yandex#readme",
   "scripts": {
-    "dev": "parcel static/index.pug",
-    "build": "parcel build static/index.pug",
-    "start": "parcel build static/index.pug && node server.js"
+    "dev": "parcel src/index.pug --open",
+    "build": "parcel build src/index.pug",
+    "watch": "parcel watch src/index.pug",
+    "start": "parcel build src/index.pug && node server.js"
   },
   "devDependencies": {
     "@parcel/transformer-pug": "^2.8.2",
+    "@parcel/transformer-sass": "^2.8.2",
     "express": "^4.18.2",
     "parcel": "^2.8.2"
   }

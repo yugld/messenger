@@ -1,0 +1,32 @@
+extends ../template.pug
+include ../../components/setField/setField.pug
+
+block templateVar 
+  - const pageTitle = "Профиль"
+  -   
+    const userData = [
+            { title: 'Почта', value: 'pochta@yandex.ru'}, 
+            { title: 'Логин', value: 'ivanivanov'},
+            { title: 'Имя', value:'Иван'},
+            { title: 'Фамилия', value:'Иванов'},
+            { title: 'Имя в чате', value: 'Иван'},
+            { title: 'Телефон', value: '+7 (909) 967 30 30'},
+        ];
+
+block content
+    .page-profile
+        .profile
+            .profile_header
+                .profile_header_avatar 
+                    img(src="../../../static/images/avatar_no.svg", alt="avatar")
+                .profile_header_name Иван
+            .profile_info 
+                each field in userData
+                    +setField(field.title, field.value)
+            .profile_buttons
+                .profile_buttons__changeData
+                    a(href="#").link Изменить данные
+                .profile_buttons__changePassword
+                    a(href="#").link Изменить пароль
+                .profile_buttons__logout
+                    a(href="#").link__red Выйти
