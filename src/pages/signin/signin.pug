@@ -10,14 +10,14 @@ block content
         .sign-up_form
             h1.sign-up_form__title Регистрация
             form.sign-up_form__inputs
-                +input("text", "Почта").email
-                +input("text", "Логин").login
-                +input("text", "Имя").first-name
-                +input("text", "Фамилия").second-name
-                +input("text", "Телефон").phone
-                +input("text", "Пароль").password
-                +input("text", "Пароль(ещё раз)").check-password
+                +input("text","email", "Почта").email
+                +input("text", "login", "Логин").login
+                +input("text", "first_name", "Имя").first_name
+                +input("text", "second_name", "Фамилия").second_name
+                +input("text", "phone", "Телефон").phone
+                +input("text", "password", "Пароль").password
+                +input("text", "check-password", "Пароль(ещё раз)").check-password
             .sign-up_form__buttons
-                +button('Зарегистрироваться').sign-up_form__btn
+                +button('submit', 'Зарегистрироваться').sign-up_form__btn
                 a(href="/src/pages/sign-up/").sign-up_form__link-login
                 a.sign-up_form__link-signin(href="#") Войти

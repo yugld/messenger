@@ -12,6 +12,7 @@
   width: 510px;
 
   &_header {
+    margin-bottom: 20px;
 
     &_avatar {
       display: flex;
@@ -58,4 +59,8 @@
 
 .link__red {
   color: $color__error;
+}
+
+.editProfile_button {
+  margin: 0 auto;
 }

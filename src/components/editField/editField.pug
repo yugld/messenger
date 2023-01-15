@@ -1,0 +1,7 @@
+include ../../components/input/input.pug
+
+mixin editField(subtitle, inputType, inputName, inputText)
+    .editField_data
+      .editField_subtitle= subtitle 
+      .editField_value 
+        +input(inputType, inputName, inputText).editField_input
