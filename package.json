@@ -1,8 +1,8 @@
 {
   "name": "middle.messenger.praktikum.yandex",
   "version": "1.0.0",
-  "description": "Messenger for first step",
   "browserslist": "> 0.5%, last 2 versions, not dead",
+  "description": "Messenger for first step",
   "engines": {
     "node": "16.17.1"
   },
