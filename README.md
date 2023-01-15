@@ -4,7 +4,7 @@
 
 ## Описание проекта
 
-Ссылка на [pull request](https://github.com/yugld/middle.messenger.praktikum.yandex/compare/sprint_1?expand=1)
+Ссылка на [pull request](https://github.com/yugld/middle.messenger.praktikum.yandex/pull/2)
 
 Приложение развернуто на сервисе [netlify](https://meek-taiyaki-afa351.netlify.app) [![Netlify Status](https://api.netlify.com/api/v1/badges/77e9c85e-1911-49ce-8d3b-d8732cbddee7/deploy-status)](https://app.netlify.com/sites/meek-taiyaki-afa351/deploys)
 
