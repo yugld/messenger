@@ -15,6 +15,7 @@
     "url": "https://github.com/yugld/middle.messenger.praktikum.yandex/issues"
   },
   "homepage": "https://github.com/yugld/middle.messenger.praktikum.yandex#readme",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "dev": "parcel src/index.pug --open",
     "build": "parcel build src/index.pug",
