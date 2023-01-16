@@ -1,0 +1,31 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "description": "Messenger for first step",
+  "engines": {
+    "node": "16.17.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yugld/middle.messenger.praktikum.yandex.git"
+  },
+  "author": "Yulia Gladysheva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yugld/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/yugld/middle.messenger.praktikum.yandex#readme",
+  "scripts": {
+    "dev": "parcel src/index.pug --open",
+    "build": "parcel build src/index.pug",
+    "watch": "parcel watch src/index.pug",
+    "start": "parcel build src/index.pug && node server.js"
+  },
+  "devDependencies": {
+    "@parcel/transformer-pug": "^2.8.2",
+    "@parcel/transformer-sass": "^2.8.2",
+    "express": "^4.18.2",
+    "parcel": "^2.8.2"
+  }
+}

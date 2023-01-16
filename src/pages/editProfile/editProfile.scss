@@ -1,0 +1,75 @@
+.editProfile {
+display: flex;
+flex-direction: column;
+width: 510px;
+
+    &_header {
+        margin-bottom: 20px;
+
+        &_avatar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background-color: $background-color__input;
+        margin-inline: auto;
+        margin-bottom: 20px;
+
+            img {
+                width: 40px;
+                height: 40px;
+                position: absolute;
+            }
+            form {
+                width: 100%;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+                display: flex;
+                position: relative;
+            }
+            label {
+                color: $color__primary;
+                visibility: hidden;
+                font-size: 13px;
+                line-height: 14px;
+            }
+            input {
+                width: 100%;
+                border-radius: 50%;
+                opacity: 0;
+                height: 100%;
+                position: absolute;
+            }
+            &:hover {
+                background-color: $text-color__primary;
+                opacity: 0.5;
+                label {
+                    visibility: visible;
+                }
+                img {
+                    visibility: hidden;
+                }
+            }
+        }
+        
+        &_name {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 16px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+    }
+
+    &_info {
+        margin-bottom: 60px;
+    }
+
+    &_button {
+        margin: 0 auto;
+    }
+
+}

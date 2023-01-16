@@ -1,0 +1,13 @@
+.setField_data {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $color__hover;
+}
+
+.setField_value {
+  color: $text-color__secondary;
+  font-size: 13px;
+}
+  

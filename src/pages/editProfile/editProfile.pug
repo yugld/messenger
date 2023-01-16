@@ -1,0 +1,34 @@
+extends ../template.pug
+include ../../components/editField/editField.pug
+include ../../components/button/button.pug
+
+block templateVar 
+  - const pageTitle = "Редактирование профиля"
+  -   
+    const userData = [
+            { title: 'Почта', inputType: 'email', inputName: 'email', inputText: 'pochta@yandex.ru'}, 
+            { title: 'Логин', inputType: 'text',inputName: 'login', inputText: 'ivanivanov'},
+            { title: 'Имя', inputType: 'text', inputName: 'first_name', inputText: 'Иван'},
+            { title: 'Фамилия', inputType: 'text', inputName: 'second_name', inputText: 'Иванов'},
+            { title: 'Имя в чате', value: 'Иван', inputType: 'text', inputName: 'display_name', inputText: 'Иван'},
+            { title: 'Телефон', inputType: 'tel', inputName: 'phone', inputText:'+7 (909) 967 30 30'},
+            { title: 'Старый пароль', inputType: 'password', inputName: 'oldPassword', inputText: '0000'},
+            { title: 'Новый пароль', inputType: 'password', inputName: 'newPassword', inputText: '0000'}
+        ];
+
+block content
+    .page-profile
+        .editProfile
+            .editProfile_header
+                .editProfile_header_avatar
+                    img(src="../../../static/images/avatar_no.svg" alt="avatar")
+                    form.editProfile_avatar_form
+                        label(for="avatar") Поменять аватар
+                        input(type="file" name="avatar")
+                .editProfile_header_name Иван
+            form.editProfile_info 
+                each field in userData
+                    +editField(field.title, field.inputType, field.inputName, field.inputText)
+            .editProfile_button
+                +button('submit', 'Сохранить').editProfile_button_saveData
+                    a(href="#").link Сохранить

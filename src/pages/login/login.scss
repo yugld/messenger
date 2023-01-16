@@ -1,0 +1,37 @@
+.block-center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login_form {
+  padding: 30px;
+  padding-top: 50px;
+  width: 340px;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+  border-radius: 12px;
+
+  &__title {
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  
+  &__inputs {
+    margin-bottom: 159px;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__link-signup {
+    text-align: center;
+    color:$color__secondary;
+  }
+}
+

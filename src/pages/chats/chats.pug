@@ -1,0 +1,43 @@
+extends ../template.pug
+
+block templateVar 
+  - const pageTitle = "Чат"
+
+block content
+    .page-chats
+        .chatlist
+            .chatlist_container
+                .chatlist_header
+                    .chatlist_header_btn-profile
+                        button.btn-profile
+                            a(href='#').chatlist_header_btn-profile__link
+                                span.chatlist_header_btn-profile__link-text Профиль
+                                svg(width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg").chatlist_header_btn-profile__img-array
+                                    path(d="M1 9L5 5L1 1" stroke="#999999")
+                    .chatlist_header_search
+                        label.chatlist_header_search__img-search 
+                        input.chatlist_header_search__input(type="text"  placeholder="Поиск")
+                        
+                .chatlist
+                    .chatlist-item
+                        each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                            .chatlist-item_wrapper
+                                img.chatlist-item_avatar(src = '../../../static/images/avatar.png')
+                                .chatlist-item_content 
+                                    .chatlist-item_content__name Fedor
+                                    .chatlist-item_content__messege hello from Fedor!!!!!
+                                .chatlist-item_secondary 
+                                    .chatlist-item_secondary_time 10:49
+                                    .chatlist-item_secondary_unread 2
+                                        
+        .chat
+            .chat-notSelected Выберите чат чтобы отправить сообщение                   
+            .chat-selected
+                .chat_header
+                    .chat_header_info
+                        img.chat_header_info__avatar(src= '../../../static/images/avatar.png')
+                        .chat_header_info__name Fedor
+                    .chat_header_menu
+                        button.chat_header__menu-btn 
+                            img.chat_header__menu-btn(src= '../../../static/images/menu.svg')
+                .chat_content

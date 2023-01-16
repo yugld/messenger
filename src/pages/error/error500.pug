@@ -1,0 +1,11 @@
+extends ../template.pug
+
+block templateVar 
+  - const pageTitle = "Ошибка 5**"
+
+block content
+    .page
+    .error
+        h1.error_title__number 5**
+        p.error__message Мы уже фиксим
+        a.error__link-back(onclick="window.location.href = './chats.html'") Назад к чатам
