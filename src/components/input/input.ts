@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import { Validation } from '../../utils/Validation';
+import { Validation } from '../../utils/validation';
 import { InputField } from '../inputField/inputField';
 import { ErrorText } from '../errorText/errorText';
 
