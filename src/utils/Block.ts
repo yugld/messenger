@@ -11,7 +11,6 @@ abstract class Block<props extends Record<string, any> = unknown> {
 
   public _id = nanoid(6);
 
-  //protected props: any;
 
   private eventBus: () => EventBus;
 
