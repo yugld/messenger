@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/yugld/middle.messenger.praktikum.yandex#readme",
   "scripts": {
-    "dev": "parcel src/index.pug --open",
+    "dev": "parcel src/index.pug --port 3000 --open",
     "build": "parcel build src/index.pug",
     "watch": "parcel watch src/index.pug",
     "start": "parcel build src/index.pug && node server.js"
