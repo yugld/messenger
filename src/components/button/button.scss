@@ -1,14 +1,15 @@
 .button {
-    font-family: 'Inter';
-    font-size: 13px;
-    line-height: 13px;
-    text-align: center;
-    background: $color__secondary;
-    color:$color__primary;
-    display: block;
-    padding: 12px 70px;
-    margin-bottom: 14px;
-    border: none;
-    border-radius: 8px
-  }
-  
+  text-align: center;
+  background: $color__secondary;
+  display: block;
+  padding: 12px 70px;
+  margin-bottom: 14px;
+  border: none;
+  border-radius: 8px
+
+}
+//исправить?!
+a {
+color: $color__primary;
+}
+

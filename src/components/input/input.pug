@@ -1,2 +1,6 @@
-mixin input(inputType, inputName, inputText)
-    input(type=inputType, name=inputName placeholder=inputText).input
+.inputField.field
+	|	!{inputField}
+	label.inputField_label.field__label(for=idInput)=label
+	.inputField_error
+		| !{errorText}
+
