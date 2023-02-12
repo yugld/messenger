@@ -18,8 +18,8 @@
   "homepage": "https://github.com/yugld/middle.messenger.praktikum.yandex#readme",
   "scripts": {
     "dev": "parcel src/index.html --no-cache --open",
-    "build": "parcel build src/index.htm --no-cache",
-    "watch": "parcel watch src/index.htm",
+    "build": "parcel build src/index.html --no-cache",
+    "watch": "parcel watch src/index.html",
     "start": "parcel build src/index.html && node server.js",
     "lint": "eslint . --ext .ts --fix"
   },

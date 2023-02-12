@@ -1,4 +1,4 @@
-import { Input, ERROR_TEXT } from '../../components/input/input';
+import { Input } from '../../components/input/input';
 
 import { ButtonImg } from '../../components/buttonImg/buttonImg';
 import Block from '../../utils/Block';

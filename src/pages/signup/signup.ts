@@ -1,7 +1,7 @@
 import Block from '../../utils/Block';
 import template from './signUp.pug';
 import { Button } from '../../components/button/button';
-import { Input, ERROR_TEXT } from '../../components/input/input';
+import { Input } from '../../components/input/input';
 
 interface SignUpProps {
     title: string;
