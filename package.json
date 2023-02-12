@@ -4,7 +4,7 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "description": "Messenger for first step",
   "engines": {
-    "node": ">=12"
+    "node": "16.17.1"
   },
   "repository": {
     "type": "git",
