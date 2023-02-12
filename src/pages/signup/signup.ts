@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import template from './signUp.pug';
+import template from './signup.pug';
 import { Button } from '../../components/button/button';
 import { Input } from '../../components/input/input';
 

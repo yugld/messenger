@@ -1,6 +1,7 @@
 import Block from '../../utils/Block';
 import template from './profile.pug';
 import { DataField } from '../../components/dataField/dataField';
+
 import noAvavtarIcon from '../../../static/images/avatar_no.svg';
 
 interface ProfileProps {
