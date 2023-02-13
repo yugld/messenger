@@ -13,10 +13,7 @@ interface LoginProps {
     };
 }
 
-export class Login extends Block {
-  constructor(props: LoginProps) {
-    super(props);
-  }
+export class Login extends Block<LoginProps> {
 
   init() {
     const fields = [

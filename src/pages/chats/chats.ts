@@ -10,7 +10,7 @@ import statusReadIcon from '../../../static/images/statusRead.svg';
 import arrowIcon from '../../../static/images/arrow.svg';
 import attachIcon from '../../../static/images/attach.svg';
 
-interface ChatProps {
+interface IChatProps {
     title: string;
     classes?: string[];
     url?: string;
@@ -20,10 +20,7 @@ interface ChatProps {
     };
 }
 
-export class Chats extends Block {
-  constructor(props: ChatProps) {
-    super(props);
-  }
+export class Chats extends Block<IChatProps> {
 
   init() {
     const message = new Input({

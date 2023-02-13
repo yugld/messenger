@@ -5,10 +5,7 @@ interface Error404Props {
   title: string;
 }
 
-export class Error404 extends Block {
-  constructor(props: Error404Props) {
-    super(props);
-  }
+export class Error404 extends Block<Error404Props> {
 
   render() {
     return this.compile(template, { ...this.props });

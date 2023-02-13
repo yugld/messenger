@@ -14,10 +14,7 @@ interface ProfileProps {
   };
 }
 
-export class Profile extends Block {
-  constructor(props: ProfileProps) {
-    super(props);
-  }
+export class Profile extends Block<ProfileProps> {
 
   init() {
     const fields = [

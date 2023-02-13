@@ -13,10 +13,7 @@ interface SignUpProps {
     };
 }
 
-export class SignUp extends Block {
-  constructor(props: SignUpProps) {
-    super(props);
-  }
+export class SignUp extends Block<SignUpProps> {
 
   init() {
     const fields = [

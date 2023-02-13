@@ -5,10 +5,7 @@ interface Error500Props {
   title: string;
 }
 
-export class Error500 extends Block {
-  constructor(props: Error500Props) {
-    super(props);
-  }
+export class Error500 extends Block<Error500Props> {
 
   render() {
     return this.compile(template, { ...this.props });

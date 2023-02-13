@@ -24,10 +24,7 @@ interface InputProps {
   placeholder?: string;
 }
 
-export class Input extends Block {
-  constructor(props: InputProps) {
-    super(props);
-  }
+export class Input extends Block<InputProps> {
 
   init() {
     this.children.inputField = new InputField({

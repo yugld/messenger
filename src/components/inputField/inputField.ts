@@ -20,7 +20,7 @@ interface IFieldProps {
   onBlur?: (env: FocusEvent) => void;
 }
 
-export class InputField extends Block {
+export class InputField extends Block<IFieldProps> {
   constructor(props: IFieldProps) {
     super(props);
     this.props.events = {

@@ -15,10 +15,7 @@ interface IEditProfileProps {
   };
 }
 
-export class EditProfile extends Block {
-  constructor(props: IEditProfileProps) {
-    super(props);
-  }
+export class EditProfile extends Block<IEditProfileProps> {
 
   init() {
     const fields = [

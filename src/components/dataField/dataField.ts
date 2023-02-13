@@ -15,10 +15,7 @@ interface IDataFieldProps {
   fieldValue?: Block;
 }
 
-export class DataField extends Block {
-  constructor(props: IDataFieldProps) {
-    super(props);
-  }
+export class DataField extends Block<IDataFieldProps> {
 
   render() {
     return this.compile(template, {

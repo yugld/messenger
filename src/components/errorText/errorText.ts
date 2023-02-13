@@ -5,10 +5,7 @@ interface IErrorTextProps {
   errorText: string;
 }
 
-export class ErrorText extends Block {
-  constructor(props: IErrorTextProps) {
-    super(props);
-  }
+export class ErrorText extends Block<IErrorTextProps> {
 
   render() {
     return this.compile(template, {

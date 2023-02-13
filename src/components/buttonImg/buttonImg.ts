@@ -12,10 +12,7 @@ interface IButtonProps {
 
 }
 
-export class ButtonImg extends Block {
-  constructor(props: IButtonProps) {
-    super(props);
-  }
+export class ButtonImg extends Block<IButtonProps> {
 
   render() {
     return this.compile(template, { ...this.props });
