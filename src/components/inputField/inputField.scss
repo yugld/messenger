@@ -1,18 +1,19 @@
 .field {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    &__label {
-        font-weight: 500;
-        font-size: 9px;
-        color: $text-color__secondary;
-        order: 1;
-    }
-    .input {
-        order: 2;
-    }
+  &__label {
+    font-weight: 500;
+    font-size: 9px;
+    color: $text-color__secondary;
+    order: 1;
+  }
 
-    &_error{
-        order: 3;
-    }
+  .input {
+    order: 2;
+  }
+
+  &_error {
+    order: 3;
+  }
 }

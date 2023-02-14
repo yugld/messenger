@@ -48,7 +48,8 @@
     align-self: flex-start;
     width: 100%;
 
-    &__changeData, &__changePassword {
+    &__changeData,
+    &__changePassword {
       border-bottom: 1px solid $color__hover;
       margin-bottom: 10px;
       padding-bottom: 10px;
@@ -56,9 +57,11 @@
     }
   }
 }
-.link{
+
+.link {
   color: $color__secondary;
 }
+
 .link__red {
   color: $color__error;
 }
