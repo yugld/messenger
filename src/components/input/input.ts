@@ -25,7 +25,6 @@ interface InputProps {
 }
 
 export class Input extends Block<InputProps> {
-
   init() {
     this.children.inputField = new InputField({
       idInput: this.props.idInput,

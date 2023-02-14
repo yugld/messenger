@@ -14,7 +14,6 @@ interface LoginProps {
 }
 
 export class Login extends Block<LoginProps> {
-
   init() {
     const fields = [
       new Input({

@@ -24,7 +24,7 @@ class HTTPTransport {
   delete = (url: string, options = {}) => this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
 
   request = (url: string, options = {}, timeout = 5000) => {
-    const { headers= {}, method, data } = options;
+    const { headers = {}, method, data } = options;
 
     return new Promise((resolve, reject) => {
       if (!method) {

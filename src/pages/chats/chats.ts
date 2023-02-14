@@ -21,7 +21,6 @@ interface IChatProps {
 }
 
 export class Chats extends Block<IChatProps> {
-
   init() {
     const message = new Input({
       label: '',

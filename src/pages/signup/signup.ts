@@ -14,7 +14,6 @@ interface SignUpProps {
 }
 
 export class SignUp extends Block<SignUpProps> {
-
   init() {
     const fields = [
       new Input({

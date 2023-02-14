@@ -15,7 +15,6 @@ interface ProfileProps {
 }
 
 export class Profile extends Block<ProfileProps> {
-
   init() {
     const fields = [
       new DataField({

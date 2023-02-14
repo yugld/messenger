@@ -6,7 +6,6 @@ interface Error500Props {
 }
 
 export class Error500 extends Block<Error500Props> {
-
   render() {
     return this.compile(template, { ...this.props });
   }
