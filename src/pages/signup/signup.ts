@@ -3,6 +3,10 @@ import template from './signup.pug';
 import { Button } from '../../components/button/button';
 import { Input } from '../../components/input/input';
 
+import { Link } from '../../components/Link/link';
+import { SignupData } from '../../api/AuthAPI';
+import AuthController from '../../controllers/AuthController';
+
 interface SignUpProps {
     title: string;
     classes?: string[];
@@ -14,6 +18,10 @@ interface SignUpProps {
 }
 
 export class SignUp extends Block<SignUpProps> {
+  constructor() {
+    super({});
+  }
+
   init() {
     const fields = [
       new Input({
@@ -128,51 +136,33 @@ export class SignUp extends Block<SignUpProps> {
     const buttons = [
       new Button({
         label: 'Зарегистрироваться',
-        events: {
-          click: () => {
-            event.preventDefault();
-            const valid = this.children.fields.reduce((acc, val) => {
-              const result = val.checkValidate();
-              return acc && result;
-            }, true);
-            const emailUser = document.querySelector(
-              `#${this.children.fields[0].props.idInput}`,
-            )!.value;
-            const loginUser = document.querySelector(
-              `#${this.children.fields[1].props.idInput}`,
-            )!.value;
-            const firstNameUser = document.querySelector(
-              `#${this.children.fields[2].props.idInput}`,
-            )!.value;
-            const secondNameUser = document.querySelector(
-              `#${this.children.fields[3].props.idInput}`,
-            )!.value;
-            const phoneUser = document.querySelector(
-              `#${this.children.fields[4].props.idInput}`,
-            )!.value;
-            const passwordUser = document.querySelector(
-              `#${this.children.fields[5].props.idInput}`,
-            )!.value;
-            if (valid) {
-              console.log({
-                Почта: emailUser,
-                Логин: loginUser,
-                Имя: firstNameUser,
-                Фамилия: secondNameUser,
-                Телефон: phoneUser,
-                Пароль: passwordUser,
-              });
-            }
-          },
-        },
         url: '',
         classes: 'button main-button',
         type: 'submit',
+        events: {
+          click: () => this.onSubmit(),
+        },
       }),
     ];
     this.children.actions = buttons;
+
+    this.children.link = new Link({
+      label: 'Войти',
+      to: '/'
+    });
   }
 
+  onSubmit() {
+    const values = Object
+      .values(this.children)
+      .filter(child => child instanceof Input)
+      .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
+
+    const data = Object.fromEntries(values);
+
+    AuthController.signup(data as SignupData);
+  }
+  
   render() {
     return this.compile(template, { title: this.props.title });
   }

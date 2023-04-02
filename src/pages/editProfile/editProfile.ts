@@ -16,6 +16,7 @@ interface IEditProfileProps {
 }
 
 export class EditProfile extends Block<IEditProfileProps> {
+
   init() {
     const fields = [
       new DataField({

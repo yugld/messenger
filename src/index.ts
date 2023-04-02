@@ -8,38 +8,58 @@ import { EditProfile } from './pages/editProfile/editProfile';
 import { Error404 } from './pages/error/error404';
 import { Error500 } from './pages/error/error500';
 
-export function renderPage(selector: string, page: any) {
-  const root = document.querySelector(selector)!;
-  root.innerHTML = '';
-  root.append(page.getContent()!);
+import Router from './utils/Router';
+import AuthController from './controllers/AuthController';
+import store from './utils/Store';
+
+enum Routes {
+  Index = '/',
+  Login = '/login',
+  SignUp = '/signup',
+  Profile = '/profile',
+  EditProfile = '/editprofile',
+  Chats = '/chats',
+  Error404 = '/404',
+  Error500 = '/500'
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  const path = document.location.pathname;
-  switch (path) {
-    case '/':
-      break;
-    case '/login':
-      renderPage('#app', new Login({ title: 'Вход' }));
-      break;
-    case '/signup':
-      renderPage('#app', new SignUp({ title: 'Регистрация' }));
-      break;
-    case '/chats':
-      renderPage('#app', new Chats({ title: 'Chat' }));
-      break;
-    case '/profile':
-      renderPage('#app', new Profile({ title: 'Иван' }));
-      break;
-    case '/editProfile':
-      renderPage('#app', new EditProfile({ title: 'Edit Profile' }));
-      break;
-    case '/error404':
-      console.log('render404');
-      renderPage('#app', new Error404({ title: '404' }));
-      break;
-    case '/error500':
-      renderPage('#app', new Error500({ title: '500' }));
+window.addEventListener('DOMContentLoaded', async () => {
+  Router
+    .use(Routes.Index, Login)
+    .use(Routes.Login, Login)
+    .use(Routes.SignUp, SignUp)
+    .use(Routes.Profile, Profile)
+    .use(Routes.EditProfile, EditProfile)
+    .use(Routes.Chats, Chats)
+    .use(Routes.Error404, Error404)
+    .use(Routes.Error500, Error500)
+
+    //CHANGEE!!
+    .start();
+
+  /*let isProtectedRoute = true;
+
+  switch (window.location.pathname) {
+    case Routes.Index:
+    case Routes.SignUp:
+      isProtectedRoute = false;
       break;
   }
+
+  try {
+    await AuthController.fetchUser();
+
+    Router.start();
+
+    if (!isProtectedRoute) {
+      Router.go(Routes.Profile)
+    }
+  } catch (e) {
+    Router.start();
+
+    if (isProtectedRoute) {
+      Router.go(Routes.Index);
+    }
+  }*/
+
 });

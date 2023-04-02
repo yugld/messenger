@@ -1,24 +1,19 @@
 import { nanoid } from 'nanoid';
 import { EventBus } from './EventBus';
 
-abstract class Block<Props extends Record<string, any> = unknown> {
+class Block<Props extends Record<string, any> = any> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
     FLOW_CDU: 'flow:component-did-update',
     FLOW_RENDER: 'flow:render',
-  };
+  } as const;
 
-  public _id = nanoid(6);
-
+  public id = nanoid(6);
   protected props: Props;
-
   private eventBus: () => EventBus;
-
   protected _element: HTMLElement | null = null;
-
   private _meta: { props: any };
-
   protected children: Record<string, Block> | Record<string, Block[]>;
 
   /** JSDoc
@@ -145,17 +140,17 @@ abstract class Block<Props extends Record<string, any> = unknown> {
       if (Array.isArray(component)) {
         component.forEach((val) => {
           if (!contextAndStubs[name]) {
-            contextAndStubs[name] = `<div data-id='${val._id}'></div>`;
+            contextAndStubs[name] = `<div data-id='${val.id}'></div>`;
           } else {
             contextAndStubs[
               name
-            ] = `${contextAndStubs[name]}<div data-id='${val._id}'></div>`;
+            ] = `${contextAndStubs[name]}<div data-id='${val.id}'></div>`;
           }
         });
         return;
       }
 
-      contextAndStubs[name] = `<div data-id='${component._id}'></div>`;
+      contextAndStubs[name] = `<div data-id='${component.id}'></div>`;
     });
 
     const html = template(contextAndStubs);
@@ -168,7 +163,7 @@ abstract class Block<Props extends Record<string, any> = unknown> {
       let stub;
       if (Array.isArray(component)) {
         component.forEach((val) => {
-          stub = temp.content.querySelector(`[data-id='${val._id}']`);
+          stub = temp.content.querySelector(`[data-id='${val.id}']`);
           if (!stub) {
             return;
           }
@@ -176,7 +171,7 @@ abstract class Block<Props extends Record<string, any> = unknown> {
           stub.replaceWith(val.getContent()!);
         });
       } else {
-        stub = temp.content.querySelector(`[data-id='${component._id}']`);
+        stub = temp.content.querySelector(`[data-id='${component.id}']`);
         if (!stub) {
           return;
         }

@@ -1,185 +1,123 @@
-class Block {
-    getContent() { }
+import Block from './Block';
 
-    show() {
-        console.log('show');
-    }
-
-    hide() {
-        console.log('hide');
-    }
+function isEqual(lhs: string, rhs: string): boolean {
+  return lhs === rhs;
 }
 
-class Chats extends Block {
-    getContent() {
-        return 'chats';
-    }
+function render(query: string, block: Block) {
+  const root = document.querySelector(query);
 
-    show() {
-        console.log('show chats');
-    }
+  if (root === null) {
+    throw new Error(`root not found by selector "${query}"`);
+  }
 
-    hide() {
-        console.log('hide chats');
-    }
-}
+  root.innerHTML = '';
 
-class Users extends Block {
-    getContent() {
-        return 'users';
-    }
+  root.append(block.getContent()!);
 
-    show() {
-        console.log('show users');
-    }
-
-    hide() {
-        console.log('hide users');
-    }
-}
-
-function isEqual(lhs, rhs) {
-    return lhs === rhs;
-}
-
-function render(query, block) {
-    const root = document.querySelector(query);
-    root.textContent = block.getContent();
-    return root;
+  return root;
 }
 
 class Route {
-    constructor(pathname, view, props) {
-        this._pathname = pathname;
-        this._blockClass = view;
-        this._block = null;
-        this._props = props;
-    }
+  private block: Block | null = null;
 
-    navigate(pathname) {
-        if (this.match(pathname)) {
-            this._pathname = pathname;
-            this.render();
-        }
-    }
+  constructor(
+    private pathname: string,
+    private readonly blockClass: typeof Block,
+    private readonly query: string) {
+  }
 
-    leave() {
-        if (this._block) {
-            this._block.hide();
-        }
-    }
+  //можно заменить на css
+  leave() {
+    this.block = null;
+  }
 
-    match(pathname) {
-        return isEqual(pathname, this._pathname);
-    }
+  match(pathname: string) {
+    return isEqual(pathname, this.pathname);
+  }
 
-    render() {
-        if (!this._block) {
-            this._block = new this._blockClass();
-            render(this._props.rootQuery, this._block);
-            return;
-        }
+  render() {
+    if (!this.block) {
+      this.block = new this.blockClass({});
 
-        this._block.show();
+      render(this.query, this.block);
+      return;
     }
+  }
 }
 
 class Router {
-    constructor(rootQuery) {
-        if (Router.__instance) {
-            return Router.__instance;
-        }
+  private static __instance: Router;
+  private routes: Route[] = [];
+  private currentRoute: Route | null = null;
+  private history = window.history;
 
-        this.routes = [];
-        this.history = window.history;
-        this._currentRoute = null;
-        this._rootQuery = rootQuery;
-
-        Router.__instance = this;
+  constructor(private readonly rootQuery: string) {
+    if (Router.__instance) {
+      return Router.__instance;
     }
 
-    //регистрирует блок по пути в роут и возвращает себя —
-    // чтобы можно было выстроить в цепочку
-    use(pathname, block) {
-        const route = new Route(pathname, block, { rootQuery: this._rootQuery });
-        
-        this.routes.push(route);
+    this.routes = [];
 
-        return this;
+    Router.__instance = this;
+  }
+
+  //регистрирует блок по пути в роут и возвращает себя —
+  // чтобы можно было выстроить в цепочку
+  public use(pathname: string, block: typeof Block) {
+    const route = new Route(pathname, block, this.rootQuery);
+    this.routes.push(route);
+
+    return this;
+  }
+  //по событию onpopstate запускает приложение
+  public start() {
+    // Реагируем на изменения в адресной строке и вызываем перерисовку
+    window.onpopstate = (event: PopStateEvent) => {
+      const target = event.currentTarget as Window;
+
+      this._onRoute(target.location.pathname);
     }
 
-    //по событию onpopstate запускает приложение
-    start() {
-        // Реагируем на изменения в адресной строке и вызываем перерисовку
-        window.onpopstate = event => {
-            this._onRoute(event. currentTarget.location.pathname);
-        };
+    this._onRoute(window.location.pathname);
+  }
 
-        this._onRoute(window.location.pathname);
+  private _onRoute(pathname: string) {
+    const route = this.getRoute(pathname);
+
+    if (!route) {
+      return;
     }
 
-    _onRoute(pathname) {
-        const route = this.getRoute(pathname);
-      
-         if (!route) {
-          return;
-        }
-        if (this._currentRoute) {
-            this._currentRoute.leave();
-        }
-
-        this._currentRoute = route;
-        route.render(route, pathname);
+    if (this.currentRoute && this.currentRoute !== route) {
+      this.currentRoute.leave();
     }
 
-    //переходит на нужный роут и отображает нужный блок
-    go(pathname) {
-        this.history.pushState({}, "", pathname);
-        this._onRoute(pathname);
-    }
+    this.currentRoute = route;
 
-    //возвращает в прошлое состояние и показывает блок, 
-    //соответствующий тому состоянию
-    back() {
-        //this.history.back();
-        this.history.go(-1);
-        this._onRoute(pathname);
-    }
+    route.render();
+  }
 
-    // переходит в следующие состояние и показывает соответствующий блок
-    forward() {
-        //this.history.forward();
-        this.history.go(1);
-        this._onRoute(pathname);
-    }
+  //переходит на нужный роут и отображает нужный блок
+  public go(pathname: string) {
+    this.history.pushState({}, '', pathname);
 
-    getRoute(pathname) {
-        return this.routes.find(route => route.match(pathname));
-    }
+    this._onRoute(pathname);
+  }
+
+  //возвращает в прошлое состояние и показывает блок, 
+  //соответствующий тому состоянию
+  public back() {
+    this.history.back();
+  }
+
+  public forward() {
+    this.history.forward();
+  }
+
+  private getRoute(pathname: string) {
+    return this.routes.find(route => route.match(pathname));
+  }
 }
 
-// Необходимо оставить в силу особенностей тренажёра
-history.pushState({}, '', '/');
-
-const router = new Router(".app");
-
-// Можно обновиться на /user и получить сразу пользователя
-router
-    .use("/", Chats)
-    .use("/users", Users)
-    .start();
-
-// Через секунду контент изменится сам, достаточно дёрнуть переход
-setTimeout(() => {
-    router.go("/users");
-}, 1000);
-
-// А можно и назад
-setTimeout(() => {
-    router.back();
-}, 3000);
-
-// И снова вперёд
-setTimeout(() => {
-    router.forward();
-}, 5000);
+export default new Router('#app');

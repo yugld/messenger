@@ -16,6 +16,7 @@ interface IDataFieldProps {
 }
 
 export class DataField extends Block<IDataFieldProps> {
+
   render() {
     return this.compile(template, {
       label: this.props.label,

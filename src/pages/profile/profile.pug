@@ -8,8 +8,12 @@
             | !{fields}
         .profile_buttons
             .profile_buttons__changeData
-                a(href="/editProfile").link Изменить данные
+                | !{buttons}
+                a.link
+                | !{links}
             .profile_buttons__changePassword
-                a(href="/editProfile").link Изменить пароль
+                a.link
+                | !{links}
             .profile_buttons__logout
-                a(href="/").link__red Выйти
+                .link__red 
+                | !{links}

@@ -13,6 +13,7 @@ interface IButtonProps {
 }
 
 export class Button extends Block<IButtonProps> {
+
   render() {
     return this.compile(template, { ...this.props });
   }

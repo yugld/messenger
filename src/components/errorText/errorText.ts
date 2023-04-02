@@ -6,6 +6,7 @@ interface IErrorTextProps {
 }
 
 export class ErrorText extends Block<IErrorTextProps> {
+
   render() {
     return this.compile(template, {
       errorText: this.props.errorText,
