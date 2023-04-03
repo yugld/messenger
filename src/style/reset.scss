@@ -9,10 +9,11 @@
 *::after {
   box-sizing: border-box;
   box-sizing: border-box;
-  box-sizing: border-box;
 }
+
 :focus,
 :active { outline: none; }
+
 a:focus,
 a:active { outline: none; }
 
@@ -29,8 +30,8 @@ body {
   font-size: 14px;
   text-size-adjust: 100%;
   text-size-adjust: 100%;
-  text-size-adjust: 100%;
 }
+
 input,
 button,
 textarea,
@@ -39,6 +40,7 @@ select { font: inherit; }
 input::-ms-clear { display: none; }
 button { cursor: pointer; appearance: none; }
 button::-moz-focus-inner { padding: 0; border: 0; }
+
 a,
 a:visited { text-decoration: none; }
 a:hover { text-decoration: none; }
