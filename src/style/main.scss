@@ -1,15 +1,15 @@
-@import 'reset.scss';
-@import 'fonts.scss';
-@import 'variables.scss';
+@import url('reset.scss');
+@import url('fonts.scss');
+@import url('variables.scss');
 
 .main {
-    display: flex;
-    background: $color__primary;
-    color: $text-color__primary;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-}  
+  display: flex;
+  background: $color__primary;
+  color: $text-color__primary;
+  font-family: Inter, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+}
 
 .page-navigation {
   position: absolute;
@@ -18,25 +18,24 @@
   transform: translate(-20%, -40%);
   font-size: 30px;
 
-  h1{
+  h1 {
     font-size: 36px;
     margin-bottom: 15px;
   }
-  li{
+
+  li {
     padding-bottom: 10px;
-    
-    a{
+
+    a {
       color: $color__secondary;
     }
   }
 }
 
-
-@import '../components/components.scss';
-
-@import '../pages/chats/chats.scss';
-@import '../pages/login/login.scss';
-@import '../pages/signup/signup.scss';
-@import '../pages/profile/profile.scss';
-@import '../pages/editProfile/editProfile.scss';
-@import '../pages/error/error.scss';
+@import url('../components/components.scss');
+@import url('../pages/chats/chats.scss');
+@import url('../pages/login/login.scss');
+@import url('../pages/signup/signup.scss');
+@import url('../pages/profile/profile.scss');
+@import url('../pages/editProfile/editProfile.scss');
+@import url('../pages/error/error.scss');
