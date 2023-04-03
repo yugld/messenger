@@ -1,14 +1,14 @@
 import Block from '../../utils/Block';
 import template from './profile.pug';
 import { DataField } from '../../components/dataField/dataField';
-
 import noAvavtarIcon from '../../../static/images/avatar_no.svg';
 
-import { withStore } from '../../utils/Store';
+import store, { withStore } from '../../utils/Store';
 import AuthController from '../../controllers/AuthController';
 import { Link } from "../../components/Link/link";
 import { LinkBack } from "../../components/linkBack/linkBack";
 import { Button } from '../../components/button/button';
+
 
 interface ProfileProps {
   title: string;
@@ -22,6 +22,11 @@ interface ProfileProps {
 
 class ProfilePage extends Block<ProfileProps> {
 
+  constructor() {
+    const state = store.getState();
+    super(state.user || {});
+  }
+
   init() {
     AuthController.fetchUser();
 
@@ -29,37 +34,37 @@ class ProfilePage extends Block<ProfileProps> {
       new DataField({
         label: 'Поле',
         name: 'Почта',
-        value: 'pochta@yandex.ru',
+        value: this.props.email,
         classes: ['data'],
       }),
       new DataField({
         label: 'Поле',
         name: 'Логин',
-        value: 'ivanivanov',
+        value: this.props.login,
         classes: ['data'],
       }),
       new DataField({
         label: 'Поле',
         name: 'Имя',
-        value: 'Иван',
+        value: this.props.first_name,
         classes: ['data'],
       }),
       new DataField({
         label: 'Поле',
         name: 'Фамилия',
-        value: 'Иванов',
+        value: this.props.second_name,
         classes: ['data'],
       }),
       new DataField({
         label: 'Поле',
         name: 'Имя в чате',
-        value: 'Иван',
+        value: this.props.display_name,
         classes: ['data'],
       }),
       new DataField({
         label: 'Поле',
         name: 'Телефон',
-        value: '+7 (909) 967 30 30',
+        value: this.props.phone,
         classes: ['data'],
       }),
     ];
@@ -77,7 +82,7 @@ class ProfilePage extends Block<ProfileProps> {
         classes: 'link profile_buttons__changeData',
       }),
       new Link({
-        to: '/editprofile',
+        to: '/editpassword',
         label: 'Изменить пароль',
         classes: 'link profile_buttons__changePassword',
       }),
@@ -93,16 +98,16 @@ class ProfilePage extends Block<ProfileProps> {
         }
       }
     })
-
   }
+
 
   render() {
     return this.compile(template, {
+      name: this.props.display_name || "Anonym",
+      props: this.props,
       noAvavtarIcon,
     });
   }
 }
 
-const withUser = withStore((state) => ({ ...state.user }))
-
-export const Profile = withUser(ProfilePage);
+export const Profile = withStore((state) => { return state.user || {};})(ProfilePage);

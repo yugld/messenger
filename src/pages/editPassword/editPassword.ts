@@ -1,5 +1,5 @@
 import Block from '../../utils/Block';
-import template from './editProfile.pug';
+import template from './editPassword.pug';
 import { Button } from '../../components/button/button';
 import { Input } from '../../components/input/input';
 import { DataField } from '../../components/dataField/dataField';
@@ -10,9 +10,8 @@ import { LinkBack } from "../../components/linkBack/linkBack";
 
 import { withStore } from "../../utils/Store";
 import UserController from "../../controllers/UserController";
-import { ChangeUserData } from '../../api/types';
+import { ChangePasswordData } from '../../api/types';
 import { getData } from "../../utils/getData";
-import { checkValidate } from "../../utils/validation";
 
 interface IEditProfileProps {
   title: string;
@@ -24,7 +23,7 @@ interface IEditProfileProps {
   };
 }
 
-export class EditProfileBase extends Block<IEditProfileProps> {
+export class EditPasswordBase extends Block<IEditProfileProps> {
 
   /*constructor(props: IEditProfileProps) {
     super(props);
@@ -34,73 +33,37 @@ export class EditProfileBase extends Block<IEditProfileProps> {
     const fields = [
       new DataField({
         label: 'Поле',
-        name: 'Почта',
+        name: 'Старый пароль',
         classes: ['data'],
         fieldValue: new Input({
           label: '',
-          idInput: 'email',
-          type: 'text',
-          valueInput: this.props.email,
+          idInput: 'oldPassword',
+          type: 'password',
+          valueInput: this.props.oldPassword,
           inputClasses: '',
         }),
       }),
       new DataField({
         label: 'Поле',
-        name: 'Логин',
+        name: 'Новый пароль',
         classes: ['data'],
         fieldValue: new Input({
           label: '',
-          idInput: 'login',
-          type: 'text',
-          valueInput: this.props.login,
+          idInput: 'newPassword',
+          type: 'password',
+          valueInput: this.props.newPassword,
           inputClasses: '',
         }),
       }),
       new DataField({
         label: 'Поле',
-        name: 'Имя',
+        name: 'Повторите новый пароль',
         classes: ['data'],
         fieldValue: new Input({
           label: '',
-          idInput: 'first_name',
-          type: 'text',
-          valueInput: this.props.first_name,
-          inputClasses: '',
-        }),
-      }),
-      new DataField({
-        label: 'Поле',
-        name: 'Фамилия',
-        classes: ['data'],
-        fieldValue: new Input({
-          label: '',
-          idInput: 'second_name',
-          type: 'text',
-          valueInput: this.props.second_name,
-          inputClasses: '',
-        }),
-      }),
-      new DataField({
-        label: 'Поле',
-        name: 'Имя в чате',
-        classes: ['data'],
-        fieldValue: new Input({
-          label: '',
-          idInput: 'display_name',
-          type: 'text',
-          valueInput: this.props.display_name,
-          inputClasses: '',
-        }),
-      }),
-      new DataField({
-        label: 'Поле',
-        name: 'Телефон',
-        classes: ['data'],
-        fieldValue: new Input({
-          label: '',
-          idInput: 'phone',
-          type: 'text',
-          valueInput: this.props.phone,
+          idInput: 'passwordYet',
+          type: 'password',
+          valueInput: this.props.newPassword,
           inputClasses: '',
         }),
       }),
@@ -125,9 +88,10 @@ export class EditProfileBase extends Block<IEditProfileProps> {
   async onSubmit(e: Event) {
     e.preventDefault();
     const data = getData(this.getContent()?.querySelector(".editProfile_info"));
-  
+
     console.log(data);
-    await UserController.changeUser(data as ChangeUserData);
+    
+    await UserController.changePassword(data as ChangePasswordData);
   }
 
   render() {
@@ -141,4 +105,4 @@ export class EditProfileBase extends Block<IEditProfileProps> {
 
 const withUser = withStore((state) => ({ ...state.user }));
 
-export const EditProfile = withUser(EditProfileBase);
+export const EditPassword = withUser(EditPasswordBase);

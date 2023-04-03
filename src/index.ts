@@ -5,6 +5,7 @@ import { SignUp } from './pages/signup/signup';
 import { Chats } from './pages/chats/chats';
 import { Profile } from './pages/profile/profile';
 import { EditProfile } from './pages/editProfile/editProfile';
+import { EditPassword } from './pages/editPassword/editPassword';
 import { Error404 } from './pages/error/error404';
 import { Error500 } from './pages/error/error500';
 
@@ -18,6 +19,7 @@ enum Routes {
   SignUp = '/signup',
   Profile = '/profile',
   EditProfile = '/editprofile',
+  EditPassword = '/editpassword',
   Chats = '/chats',
   Error404 = '/404',
   Error500 = '/500'
@@ -30,14 +32,13 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.SignUp, SignUp)
     .use(Routes.Profile, Profile)
     .use(Routes.EditProfile, EditProfile)
+    .use(Routes.EditPassword, EditPassword)
     .use(Routes.Chats, Chats)
     .use(Routes.Error404, Error404)
     .use(Routes.Error500, Error500)
 
-    //CHANGEE!!
-    .start();
 
-  /*let isProtectedRoute = true;
+  let isProtectedRoute = true;
 
   switch (window.location.pathname) {
     case Routes.Index:
@@ -60,6 +61,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     if (isProtectedRoute) {
       Router.go(Routes.Index);
     }
-  }*/
+  }
 
 });

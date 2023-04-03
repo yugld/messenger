@@ -22,6 +22,7 @@ class Block<Props extends Record<string, any> = any> {
    *
    * @returns {void}
    */
+  
   constructor(propsWithChildren: any = {}) {
     const eventBus = new EventBus();
 

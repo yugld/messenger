@@ -23,7 +23,7 @@ export interface User {
     avatar: string;
 }
 
-export interface UpdateUserData {
+export interface ChangeUserData {
     first_name: string;
     second_name: string;
     display_name: string;
@@ -32,7 +32,11 @@ export interface UpdateUserData {
     phone: string;
 }
 
-export interface UpdatePasswordData {
+export interface ChangePasswordData {
     oldPassword: string;
     newPassword: string;
+}
+
+export interface SearchUserData {
+    login: string;
 }

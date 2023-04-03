@@ -26,14 +26,6 @@ interface InputProps {
 
 export class Input extends Block<InputProps> {
 
-  /*public getName() {
-    return (this.element as HTMLInputElement).name;
-  }
-
-  public getValue() {
-    return (this.element as HTMLInputElement).value;
-  }*/
-
   init() {
     this.children.inputField = new InputField({
       idInput: this.props.idInput,
@@ -89,7 +81,6 @@ export class Input extends Block<InputProps> {
         valueInput: val,
       });
     }
-
     return isValid;
   }
 
