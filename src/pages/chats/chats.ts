@@ -10,6 +10,8 @@ import statusReadIcon from '../../../static/images/statusRead.svg';
 import arrowIcon from '../../../static/images/arrow.svg';
 import attachIcon from '../../../static/images/attach.svg';
 
+import { Link } from "../../components/Link/link";
+
 interface IChatProps {
     title: string;
     classes?: string[];
@@ -23,6 +25,13 @@ interface IChatProps {
 export class Chats extends Block<IChatProps> {
 
   init() {
+
+    this.children.linkToProfile = new Link({
+      to: "/profile",
+      label: "Мой профиль",
+      classes: 'link_profile',
+    });
+
     const message = new Input({
       label: '',
       idInput: 'message',

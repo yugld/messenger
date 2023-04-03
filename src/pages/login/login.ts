@@ -4,7 +4,7 @@ import { Button } from '../../components/button/button';
 import { Input } from '../../components/input/input';
 
 import { Link } from '../../components/Link/link';
-import { SigninData } from '../../api/AuthAPI';
+import { SigninData } from '../../api/types';
 import AuthController from '../../controllers/AuthController';
 
 interface LoginProps {
@@ -58,22 +58,19 @@ export class Login extends Block<LoginProps> {
     ];
     this.children.fields = fields;
 
-    const buttons = [
-      new Button({
+    this.children.buttonEnter = new Button({
         label: 'Войти',
-        classes: 'login_form__btn login_form__link-login',
+        classes: 'button login_form__btn',
         type: 'submit',
         events: {
           click: () => this.onSubmit(),
           },
-      }),
-    ];
-
-    this.children.actions = buttons;
+      });
 
     this.children.link = new Link({
       label: 'Регистрация',
-      to: '/signup'
+      to: '/signup',
+      classes: 'link login_form__link-signup',
     });
   }
 

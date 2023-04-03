@@ -23,6 +23,20 @@ border-radius: 12px;
   margin-bottom: 159px;
 }
 
+.button {
+  text-align: center;
+  background: $color__secondary;
+  display: block;
+  padding: 12px 70px;
+  margin-bottom: 14px;
+  border: none;
+  border-radius: 8px;
+
+  &:hover {
+    box-shadow: 0 0 3px $color__secondary;
+  }
+}
+
 .input {
   border: none;
   border-bottom: 1px solid $color__secondary;
@@ -49,7 +63,7 @@ border-radius: 12px;
 
 &__link-signup {
   text-align: center;
-  color:$color__secondary;
+  color: $color__secondary;
 }
 }
 

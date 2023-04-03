@@ -1,4 +1,5 @@
-.page-profile.maim
+.page-profile.main
+    | !{linkToChats}
     .profile
         .profile_header
             .profile_header_avatar 
@@ -7,13 +8,6 @@
         .profile_info 
             | !{fields}
         .profile_buttons
-            .profile_buttons__changeData
-                | !{buttons}
-                a.link
-                | !{links}
-            .profile_buttons__changePassword
-                a.link
-                | !{links}
-            .profile_buttons__logout
-                .link__red 
-                | !{links}
+            | !{links}
+            | !{links}
+            | !{exitLink}

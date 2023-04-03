@@ -4,7 +4,7 @@ import { Button } from '../../components/button/button';
 import { Input } from '../../components/input/input';
 
 import { Link } from '../../components/Link/link';
-import { SignupData } from '../../api/AuthAPI';
+import { SignupData } from '../../api/types';
 import AuthController from '../../controllers/AuthController';
 
 interface SignUpProps {
@@ -133,30 +133,30 @@ export class SignUp extends Block<SignUpProps> {
     ];
     this.children.fields = fields;
 
-    const buttons = [
-      new Button({
+    this.children.buttonSignup = new Button({
         label: 'Зарегистрироваться',
-        url: '',
-        classes: 'button main-button',
+        classes: 'button main-button sign-up_form__buttons actions',
         type: 'submit',
         events: {
           click: () => this.onSubmit(),
         },
-      }),
-    ];
-    this.children.actions = buttons;
+    });
 
     this.children.link = new Link({
       label: 'Войти',
-      to: '/'
+      to: '/',
+      classes: 'sign-up_form__link-signin',
     });
   }
 
   onSubmit() {
     const values = Object
-      .values(this.children)
+      .values(this.children.fields)
       .filter(child => child instanceof Input)
-      .map((child) => ([(child as Input).getName(), (child as Input).getValue()]))
+      .map((child) => ([
+        child._element.childNodes[1].name,
+        child._element.childNodes[1].value,
+      ]));
 
     const data = Object.fromEntries(values);
 
@@ -164,6 +164,6 @@ export class SignUp extends Block<SignUpProps> {
   }
   
   render() {
-    return this.compile(template, { title: this.props.title });
+    return this.compile(template, { title: 'Регистрация' });
   }
 }

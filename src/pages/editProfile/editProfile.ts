@@ -5,6 +5,9 @@ import { Input } from '../../components/input/input';
 import { DataField } from '../../components/dataField/dataField';
 import noAvavtarIcon from '../../../static/images/avatar_no.svg';
 
+import { Link } from "../../components/Link/link";
+import { LinkBack } from "../../components/linkBack/linkBack";
+
 interface IEditProfileProps {
   title: string;
   classes?: string[];
@@ -130,13 +133,18 @@ export class EditProfile extends Block<IEditProfileProps> {
     ];
     this.children.fields = fields;
 
-    this.children.actions = new Button({
+    this.children.linkToProfile = new LinkBack({
+      to:'/profile',
+      classes: 'link_back',
+    });
+
+    this.children.buttonSave = new Button({
       label: 'Сохранить',
+      type: "submit",
+      classes: 'button main-button editProfile_button editProfile_button_saveData',
       events: {
-        click: () => {},
+        click: () => this.onSubmit(),
       },
-      classes: 'button main-button',
-      url: '/',
     });
   }
 

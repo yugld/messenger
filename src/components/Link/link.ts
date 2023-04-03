@@ -1,15 +1,12 @@
 import Block from '../../utils/Block';
 import { PropsWithRouter, withRouter } from '../../hocs/withRouter';
 import template from './link.pug';
-import styles from './link.scss';
 
 interface LinkProps extends PropsWithRouter {
   to: string;
   label: string;
   classes?: string;
-  events?: {
-    click: () => void;
-  };
+  events?: Record<string, EventListenerOrEventListenerObject>;
 }
 
 class BaseLink extends Block<LinkProps> {
@@ -27,7 +24,7 @@ class BaseLink extends Block<LinkProps> {
   }
 
   render() {
-    return this.compile(template, { ...this.props, styles });
+    return this.compile(template, this.props);
   }
 }
 

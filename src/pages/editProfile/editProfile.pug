@@ -1,5 +1,6 @@
-.page-profile
+.page-profile.main 
     .editProfile
+        | !{linkToProfile}
         .editProfile_header
             .editProfile_header_avatar
                 img(src=noAvavtarIcon alt="avatar")
@@ -9,5 +10,4 @@
             .editProfile_header_name Иван
         form.editProfile_info 
             | !{fields}
-        .editProfile_button.editProfile_button_saveData
-            | !{actions} 
+        | !{buttonSave} 

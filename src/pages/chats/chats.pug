@@ -2,11 +2,8 @@
     .chatlist
         .chatlist_container
             .chatlist_header
-                .chatlist_header_btn-profile
-                    button.btn-profile
-                        a(href='/profile').chatlist_header_btn-profile__link
-                            span.chatlist_header_btn-profile__link-text Профиль
-                            img(src= arrowIcon alt='arrow icon').chatlist_header_btn-profile__img-array
+                .link_profile
+                    | !{linkToProfile}
                 .chatlist_header_search
                     label.chatlist_header_search__img-search 
                     input.chatlist_header_search__input(type="text"  placeholder="Поиск")

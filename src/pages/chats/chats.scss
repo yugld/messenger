@@ -11,6 +11,7 @@
 	flex-direction: column;
 	
 		&_header {
+			display: block;
 			color: $text-color__secondary;
 			padding: 15px 10px;
 			text-align: right;
@@ -18,21 +19,12 @@
 			flex-direction: column;
 			border-bottom: 1px solid $color__hover;
 
-			&_btn-profile {
+			.link_profile {
 				display: flex;
 				align-items: center;
 				align-self: flex-end;
 				margin-bottom: 23px;
-				
-				&__link {
-					line-height: 12px;
-					color: $text-color__secondary;
-					background-color: $background-color__secondary
-				}
-			
-				&__link-text {
-					margin-right: 9px;
-				}
+				color: $text-color__secondary;
 			}
 		}
 }

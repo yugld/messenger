@@ -7,6 +7,8 @@ import noAvavtarIcon from '../../../static/images/avatar_no.svg';
 import { withStore } from '../../utils/Store';
 import AuthController from '../../controllers/AuthController';
 import { Link } from "../../components/Link/link";
+import { LinkBack } from "../../components/linkBack/linkBack";
+import { Button } from '../../components/button/button';
 
 interface ProfileProps {
   title: string;
@@ -63,26 +65,34 @@ class ProfilePage extends Block<ProfileProps> {
     ];
     this.children.fields = fields;
 
+    this.children.linkToChats = new LinkBack({
+      to:'/chats',
+      classes: 'link_back',
+    });
+
     const links = [
       new Link({
+        to: '/editprofile',
         label: 'Изменить данные',
-        to: '/editProfile',
+        classes: 'link profile_buttons__changeData',
       }),
       new Link({
+        to: '/editprofile',
         label: 'Изменить пароль',
-        to: '/editProfile',
-      }),
-      new Link({
-        label: 'Выйти',
-        to: '/',
-        events: {
-          click: () => {
-            AuthController.logout();
-          }
-        }
+        classes: 'link profile_buttons__changePassword',
       }),
     ];
     this.children.links = links;
+
+    this.children.exitLink = new Button({
+      label: 'Выйти',
+      classes: 'profile_buttons__logout link__red',
+      events: {
+        click: () => {
+          AuthController.logout();
+        }
+      }
+    })
 
   }
 
