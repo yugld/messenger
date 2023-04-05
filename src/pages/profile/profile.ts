@@ -1,13 +1,13 @@
 import Block from '../../utils/Block';
 import template from './profile.pug';
 import { DataField } from '../../components/dataField/dataField';
-import noAvavtarIcon from '../../../static/images/avatar_no.svg';
 
 import store, { withStore } from '../../utils/Store';
 import AuthController from '../../controllers/AuthController';
 import { Link } from "../../components/Link/link";
 import { LinkBack } from "../../components/linkBack/linkBack";
 import { Button } from '../../components/button/button';
+import { EditAvatar } from "../../components/editAvatar/editAvatar";
 
 
 interface ProfileProps {
@@ -29,6 +29,8 @@ class ProfilePage extends Block<ProfileProps> {
 
   init() {
     AuthController.fetchUser();
+
+    this.children.avatar = new EditAvatar({});
 
     const fields = [
       new DataField({
@@ -105,7 +107,6 @@ class ProfilePage extends Block<ProfileProps> {
     return this.compile(template, {
       name: this.props.display_name || "Anonym",
       props: this.props,
-      noAvavtarIcon,
     });
   }
 }

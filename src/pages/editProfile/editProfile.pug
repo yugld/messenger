@@ -2,11 +2,7 @@
     .editProfile
         | !{linkToProfile}
         .editProfile_header
-            .editProfile_header_avatar
-                img(src=noAvavtarIcon alt="avatar")
-                form.editProfile_avatar_form
-                    label(for="avatar") Поменять аватар
-                    input(type="file" name="avatar")
+            | !{avatar}
             .editProfile_header_name=userName
         form.editProfile_info 
             | !{fields}

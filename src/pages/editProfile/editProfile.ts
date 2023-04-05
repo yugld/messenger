@@ -3,7 +3,6 @@ import template from './editProfile.pug';
 import { Button } from '../../components/button/button';
 import { Input } from '../../components/input/input';
 import { DataField } from '../../components/dataField/dataField';
-import noAvavtarIcon from '../../../static/images/avatar_no.svg';
 
 import { Link } from "../../components/Link/link";
 import { LinkBack } from "../../components/linkBack/linkBack";
@@ -12,7 +11,7 @@ import { withStore } from "../../utils/Store";
 import UserController from "../../controllers/UserController";
 import { ChangeUserData } from '../../api/types';
 import { getData } from "../../utils/getData";
-import { checkValidate } from "../../utils/validation";
+import { EditAvatar } from "../../components/editAvatar/editAvatar";
 
 interface IEditProfileProps {
   title: string;
@@ -25,12 +24,10 @@ interface IEditProfileProps {
 }
 
 export class EditProfileBase extends Block<IEditProfileProps> {
-
-  /*constructor(props: IEditProfileProps) {
-    super(props);
-  }*/
-
   init() {
+
+    this.children.avatar = new EditAvatar({});
+
     const fields = [
       new DataField({
         label: 'Поле',
@@ -133,7 +130,6 @@ export class EditProfileBase extends Block<IEditProfileProps> {
   render() {
     return this.compile(template, {
       ...this.props,
-      noAvavtarIcon,
       userName: this.props.display_name || 'Anonym',
     });
   }

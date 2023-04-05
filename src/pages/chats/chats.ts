@@ -1,16 +1,17 @@
-import { Input } from '../../components/input/input';
-
-import { ButtonImg } from '../../components/buttonImg/buttonImg';
 import Block from '../../utils/Block';
 import template from './chats.pug';
+
+import { Input } from '../../components/input/input';
+import { ButtonImg } from '../../components/buttonImg/buttonImg';
+
+import { Link } from "../../components/Link/link";
+
 import avatarIcon from '../../../static/images/avatar.png';
 import menuIcon from '../../../static/images/menu.svg';
 import imgPhoto from '../../../static/images/camera.png';
 import statusReadIcon from '../../../static/images/statusRead.svg';
 import arrowIcon from '../../../static/images/arrow.svg';
 import attachIcon from '../../../static/images/attach.svg';
-
-import { Link } from "../../components/Link/link";
 
 interface IChatProps {
     title: string;

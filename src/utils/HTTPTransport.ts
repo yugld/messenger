@@ -52,6 +52,7 @@ export default class HTTPTransport {
 
   private request<Response>(url: string, options: Options = { method: Method.Get }): Promise<Response> {
     const { method, data } = options;
+    const isFormData = data instanceof FormData;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
@@ -71,7 +72,10 @@ export default class HTTPTransport {
       xhr.onerror = () => reject({ reason: 'network error' });
       xhr.ontimeout = () => reject({ reason: 'timeout' });
 
-      xhr.setRequestHeader('Content-Type', 'application/json');
+      if (!isFormData) {
+        xhr.setRequestHeader("Content-Type", "application/json");
+      };
+
 
       xhr.withCredentials = true;
       xhr.responseType = 'json';
@@ -79,7 +83,7 @@ export default class HTTPTransport {
       if (method === Method.Get || !data) {
         xhr.send();
       } else {
-        xhr.send(JSON.stringify(data));
+        xhr.send(isFormData ? data : JSON.stringify(data));
       }
     });
   }

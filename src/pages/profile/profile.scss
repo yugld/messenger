@@ -1,36 +1,31 @@
 .page-profile {
   display: flex;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
   font-size: 13px;
+
+  .inputField {
+    input  {
+      text-align: right;
+      color: $text-color__secondary;
+    }
+  }
+  .dataField_value {
+    color: $text-color__secondary;
+  }
 }
 
 .profile {
   display: flex;
   flex-direction: column;
   width: 510px;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
 
   &_header {
     margin-bottom: 20px;
-
-    &_avatar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      background-color: $background-color__input;
-      margin-inline: auto;
-      margin-bottom: 20px;
-
-      img {
-        width: 40px;
-        height: 40px;
-      }
-    }
 
     &_name {
       font-weight: 600;
@@ -43,6 +38,9 @@
 
   &_info {
     margin-bottom: 60px;
+    flex-direction: column;
+    display: flex;
+    width: 100%;
   }
 
   &_buttons {
@@ -64,3 +62,4 @@
 .editProfile_button {
   margin: 0 auto;
 }
+

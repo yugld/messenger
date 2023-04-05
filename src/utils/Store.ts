@@ -6,6 +6,7 @@ export enum StoreEvents {
     Updated = 'updated'
 }
 
+
 export class Store extends EventBus {
     private state: any = {};
 
@@ -20,7 +21,7 @@ export class Store extends EventBus {
     }
 }
 
-const store = new Store();
+export const store = new Store();
 
 export function withStore(mapStateToProps: (state: any) => any) {
 
