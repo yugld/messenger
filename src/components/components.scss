@@ -2,12 +2,21 @@
 @import './inputField/inputField.scss';
 @import './errorText/errorText.scss';
 @import './dataField/dataField.scss';
+
 @import './button/button.scss';
 @import './buttonImg/buttonImg.scss';
 @import './buttonClose/buttonClose.scss';
 @import './buttonEditAvatar/buttonEditAvatar.scss';
+
 @import './editAvatar/editAvatar.scss';
 @import './Link/link.scss';
 @import './linkBack/linkBack.scss';
-@import './popup/popup.scss';
 
+@import './popup/popup.scss';
+@import './popupCreate/popup.scss';
+
+@import './chatslist/chatslist.scss';
+@import './chat/chat.scss';
+@import './Message/message.scss';
+@import './Messenger/messenger.scss';
+@import './userItem/userItem.scss';

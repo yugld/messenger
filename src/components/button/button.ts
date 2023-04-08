@@ -4,12 +4,12 @@ import template from './button.pug';
 
 interface IButtonProps {
   label?: string;
-  events?: {
-    click: () => void;
-  };
+  events?: Record<string, EventListenerOrEventListenerObject>;
   classes?: string;
   url?: string;
   type?: 'button' | 'submit';
+  text?: string;
+
 }
 
 export class Button extends Block<IButtonProps> {

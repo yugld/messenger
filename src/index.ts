@@ -2,7 +2,7 @@ import './style/main.scss';
 
 import { Login } from './pages/login/login';
 import { SignUp } from './pages/signup/signup';
-import { Chats } from './pages/chats/chats';
+import { MessengerPage } from './pages/Messenger';
 import { Profile } from './pages/profile/profile';
 import { EditProfile } from './pages/editProfile/editProfile';
 import { EditPassword } from './pages/editPassword/editPassword';
@@ -20,7 +20,7 @@ enum Routes {
   Profile = '/profile',
   EditProfile = '/editprofile',
   EditPassword = '/editpassword',
-  Chats = '/chats',
+  Messenger = '/messenger',
   Error404 = '/404',
   Error500 = '/500'
 }
@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     .use(Routes.Profile, Profile)
     .use(Routes.EditProfile, EditProfile)
     .use(Routes.EditPassword, EditPassword)
-    .use(Routes.Chats, Chats)
+    .use(Routes.Messenger, MessengerPage)
     .use(Routes.Error404, Error404)
     .use(Routes.Error500, Error500)
 

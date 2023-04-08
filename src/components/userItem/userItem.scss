@@ -1,0 +1,11 @@
+.user_item {
+    text-align: left;
+    margin-bottom: 10px;
+
+    &_list {
+        margin-top: 20px;
+    }
+}
+.link_delete_user{
+    color: $color__error;
+}

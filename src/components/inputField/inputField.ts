@@ -9,8 +9,9 @@ interface IFieldProps {
     click?: () => void;
     focusin?: () => void;
     focusout?: (env: Event) => void;
+    blur?:(env: FocusEvent) => void;
   };
-  classes?: string[];
+  classes?: string;
   valueInput?: string;
   errorInput?: string;
   placeholder?: string;

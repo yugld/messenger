@@ -7,6 +7,7 @@ import template from './input.pug';
 
 interface InputProps {
   label: string;
+  name?: string;
   idInput?: string;
   type?: string;
   events?: {
@@ -14,7 +15,7 @@ interface InputProps {
     focusin?: () => void;
     focusout?: (env: Event) => void;
   };
-  classes?: string[];
+  classes?: string;
   inputClasses?: string;
   valueInput?: string;
   errorText?: string;
@@ -83,6 +84,11 @@ export class Input extends Block<InputProps> {
     }
     return isValid;
   }
+  
+  setValue(value: string) {
+    return (this.element as HTMLInputElement).value = value;
+  }
+  
 
   render() {
     return this.compile(template, {

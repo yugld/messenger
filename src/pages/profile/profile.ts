@@ -12,7 +12,7 @@ import { EditAvatar } from "../../components/editAvatar/editAvatar";
 
 interface ProfileProps {
   title: string;
-  classes?: string[];
+  classes?: string;
   url?: string;
   children?: {
     fields: Block[];
@@ -20,7 +20,7 @@ interface ProfileProps {
   };
 }
 
-class ProfilePage extends Block<ProfileProps> {
+class ProfileBase extends Block<ProfileProps> {
 
   constructor() {
     const state = store.getState();
@@ -37,43 +37,43 @@ class ProfilePage extends Block<ProfileProps> {
         label: 'Поле',
         name: 'Почта',
         value: this.props.email,
-        classes: ['data'],
+        classes: 'data',
       }),
       new DataField({
         label: 'Поле',
         name: 'Логин',
         value: this.props.login,
-        classes: ['data'],
+        classes: 'data',
       }),
       new DataField({
         label: 'Поле',
         name: 'Имя',
         value: this.props.first_name,
-        classes: ['data'],
+        classes: 'data',
       }),
       new DataField({
         label: 'Поле',
         name: 'Фамилия',
         value: this.props.second_name,
-        classes: ['data'],
+        classes: 'data',
       }),
       new DataField({
         label: 'Поле',
         name: 'Имя в чате',
         value: this.props.display_name,
-        classes: ['data'],
+        classes: 'data',
       }),
       new DataField({
         label: 'Поле',
         name: 'Телефон',
         value: this.props.phone,
-        classes: ['data'],
+        classes: 'data',
       }),
     ];
     this.children.fields = fields;
 
     this.children.linkToChats = new LinkBack({
-      to:'/chats',
+      to:'/messenger',
       classes: 'link_back',
     });
 
@@ -111,4 +111,4 @@ class ProfilePage extends Block<ProfileProps> {
   }
 }
 
-export const Profile = withStore((state) => { return state.user || {};})(ProfilePage);
+export const Profile = withStore((state) => { return state.user || {};})(ProfileBase);

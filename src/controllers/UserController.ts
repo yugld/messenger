@@ -36,7 +36,15 @@ class UserController {
         } catch (e) {
             console.error(e.message);
         }
-    
+    }
+    async searchUser(login: string) {
+        store.set("userSearchResultList", undefined);
+        try {
+            const userSearchResultList = await this.api.searchUser({ login });
+            store.set("userSearchResultList", userSearchResultList);
+        } catch (e) {
+            console.error(e.message);
+        }
     }
 }
 

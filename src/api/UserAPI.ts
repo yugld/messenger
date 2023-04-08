@@ -18,6 +18,10 @@ export class UserAPI extends BaseAPI {
         return this.http.put("/password", data);
     }
 
+    searchUser(data: SearchUserData): Promise<User[]> {
+        return this.http.post("/search", data);
+    }
+
     create = undefined;
     read = undefined;
     delete = undefined;

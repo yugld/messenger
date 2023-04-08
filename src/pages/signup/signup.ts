@@ -8,7 +8,7 @@ import { SignupData } from '../../api/types';
 import AuthController from '../../controllers/AuthController';
 
 interface SignUpProps {
-    title: string;
+    title?: string;
     classes?: string[];
     url?: string;
     children?: {
@@ -28,7 +28,7 @@ export class SignUp extends Block<SignUpProps> {
         label: 'Почта',
         idInput: 'email',
         type: 'text',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           click() { },
@@ -44,7 +44,7 @@ export class SignUp extends Block<SignUpProps> {
         label: 'Логин',
         idInput: 'login',
         type: 'text',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           focusin: () => {
@@ -59,7 +59,7 @@ export class SignUp extends Block<SignUpProps> {
         label: 'Имя',
         idInput: 'first_name',
         type: 'text',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           focusin: () => {
@@ -74,7 +74,7 @@ export class SignUp extends Block<SignUpProps> {
         label: 'Фамилия',
         idInput: 'second_name',
         type: 'text',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           focusin: () => {
@@ -89,7 +89,7 @@ export class SignUp extends Block<SignUpProps> {
         label: 'Телефон',
         idInput: 'phone',
         type: 'text',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           focusin: () => {
@@ -104,7 +104,7 @@ export class SignUp extends Block<SignUpProps> {
         label: 'Пароль',
         idInput: 'password',
         type: 'password',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           focusin: () => {
@@ -119,7 +119,7 @@ export class SignUp extends Block<SignUpProps> {
         label: 'Пароль (еще раз)',
         idInput: 'passwordYet',
         type: 'password',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           focusin: () => {

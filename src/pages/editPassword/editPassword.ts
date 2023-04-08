@@ -15,7 +15,7 @@ import { getData } from "../../utils/getData";
 
 interface IEditProfileProps {
   title: string;
-  classes?: string[];
+  classes?: string;
   url?: string;
   children?: {
     fields: Block[];
@@ -34,7 +34,7 @@ export class EditPasswordBase extends Block<IEditProfileProps> {
       new DataField({
         label: 'Поле',
         name: 'Старый пароль',
-        classes: ['data'],
+        classes: 'data',
         fieldValue: new Input({
           label: '',
           idInput: 'oldPassword',
@@ -46,7 +46,7 @@ export class EditPasswordBase extends Block<IEditProfileProps> {
       new DataField({
         label: 'Поле',
         name: 'Новый пароль',
-        classes: ['data'],
+        classes: 'data',
         fieldValue: new Input({
           label: '',
           idInput: 'newPassword',
@@ -58,7 +58,7 @@ export class EditPasswordBase extends Block<IEditProfileProps> {
       new DataField({
         label: 'Поле',
         name: 'Повторите новый пароль',
-        classes: ['data'],
+        classes: 'data',
         fieldValue: new Input({
           label: '',
           idInput: 'passwordYet',

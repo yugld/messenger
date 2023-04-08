@@ -8,7 +8,7 @@ import { SigninData } from '../../api/types';
 import AuthController from '../../controllers/AuthController';
 
 interface LoginProps {
-    title: string;
+    title?: string;
     classes?: string[];
     url?: string;
     children?: {
@@ -29,7 +29,7 @@ export class Login extends Block<LoginProps> {
         label: 'Логин',
         idInput: 'login',
         type: 'text',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           focusin: () => {
@@ -44,7 +44,7 @@ export class Login extends Block<LoginProps> {
         label: 'Пароль',
         idInput: 'password',
         type: 'password',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           focusin: () => {
