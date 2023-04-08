@@ -1,5 +1,5 @@
 import Block from "../../utils/Block";
-import template from "./UserItem.pug";
+import template from "./userItem.pug";
 import { Button } from "../button/button";
 
 interface UserItemProps {

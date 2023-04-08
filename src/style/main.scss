@@ -1,6 +1,6 @@
-@import 'reset.scss';
-@import 'fonts.scss';
-@import 'variables.scss';
+@import 'reset';
+@import 'fonts';
+@import 'variables';
 
 .main {
   display: flex;
@@ -32,11 +32,11 @@
   }
 }
 
-@import '../components/components.scss';
-@import '../pages/Messenger/styles.scss';
-@import '../pages/Messenger/messenger.scss';
-@import '../pages/login/login.scss';
-@import '../pages/signup/signup.scss';
-@import '../pages/profile/profile.scss';
-@import '../pages/editProfile/editProfile.scss';
-@import '../pages/error/error.scss';
+@import '../components/components';
+@import '../pages/Messenger/styles';
+@import '../pages/Messenger/messenger';
+@import '../pages/login/login';
+@import '../pages/signup/signup';
+@import '../pages/profile/profile';
+@import '../pages/editProfile/editProfile';
+@import '../pages/error/error';
