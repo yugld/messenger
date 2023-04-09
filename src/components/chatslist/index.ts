@@ -12,13 +12,10 @@ import { Link } from "../Link/link";
 import { Button } from "../button/button";
 import { PopupCreate } from '../popupCreate/popup';
 
-//import "./styles.scss";
-
-
-
 interface ChatsListProps {
   chats: ChatInfo[];
   isLoaded: boolean;
+  avatar?: string;
 }
 
 class ChatsListBase extends Block<ChatsListProps> {
@@ -77,6 +74,7 @@ class ChatsListBase extends Block<ChatsListProps> {
     return props.chats.map((data) => {
       return new Chat({
         ...data,
+        avatar: `https://ya-praktikum.tech/api/v2/resources${data?.avatar}`,
         events: {
           click: () => {
             ChatsController.selectChat(data.id);
