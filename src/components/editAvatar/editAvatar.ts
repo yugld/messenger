@@ -33,7 +33,7 @@ export class EditAvatarBase extends Block<EditAvatarProps> {
     }
 
     componentDidUpdate(_oldProps: EditAvatarProps, newProps: EditAvatarProps): boolean {
-        this.children.avatarButton = this.createAvatarButton(newProps);
+        this.children.button = this.createAvatarButton(newProps);
         return true;
     }
 

@@ -7,7 +7,7 @@ import AuthController from '../../controllers/AuthController';
 import { Link } from "../../components/Link/link";
 import { LinkBack } from "../../components/linkBack/linkBack";
 import { Button } from '../../components/button/button';
-import { EditAvatar } from "../../components/editAvatar/editAvatar";
+import { AvatarProfile } from "../../components/avatarProfile/avatarProfile";
 
 
 interface ProfileProps {
@@ -37,7 +37,9 @@ class ProfileBase extends Block<ProfileProps> {
   init() {
     AuthController.fetchUser();
 
-    this.children.avatar = new EditAvatar({});
+    this.children.avatarProfile = new AvatarProfile({
+      avatar: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
+    });
 
     const fields = [
       new DataField({

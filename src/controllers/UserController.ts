@@ -33,7 +33,7 @@ class UserController {
         try {
             const user = await this.api.changeAvatar(formData);
             store.set("user", user);
-            router.go('/messenger');
+            router.go('/profile');
         } catch (e) {
             console.error(e.message);
         }

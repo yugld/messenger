@@ -35,6 +35,10 @@
       margin-bottom: 30px;
       text-align: center;
     }
+
+    button:disabled {
+      cursor: default;
+    }
   }
 
   &_info {

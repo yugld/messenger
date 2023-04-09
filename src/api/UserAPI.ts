@@ -25,6 +25,7 @@ export class UserAPI extends BaseAPI {
     create = undefined;
     read = undefined;
     delete = undefined;
+    update = undefined;
 }
 
 export const API = new UserAPI();
