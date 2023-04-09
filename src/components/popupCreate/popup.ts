@@ -20,17 +20,9 @@ export class PopupCreate extends Block<PopupCreateProps> {
 
         this.children.input = new Input({
             label: 'Не может быть пустым',
-            idInput: '',
+            idInput: 'input_create_chat',
             type: 'text',
             inputClasses: 'input input_popup input_create_chat',
-            events: {
-                focusin: () => {
-                const messageText = document.querySelector(
-                    `#${this.children.message.props.idInput}`,
-                );
-                messageText?.classList.remove(ERROR_TEXT);
-                },
-            },
         }); 
         this.children.buttonClose = new ButtonClose({
             events: {

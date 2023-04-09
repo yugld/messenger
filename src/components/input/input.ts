@@ -63,7 +63,7 @@ export class Input extends Block<InputProps> {
       });
       if (!(arrClasses.indexOf('error_text') > 0)) {
         this.children.inputField.setProps({
-          classes: inputClasses.push('error_text'),
+          //classes: inputClasses.push('error_text'),
           valueInput: val,
         });
       } else {
