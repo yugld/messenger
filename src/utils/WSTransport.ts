@@ -5,6 +5,7 @@ export enum WSTransportEvents {
     Error = "error",
     Message = "message",
     Close = "close",
+    UserConnected = "user connected",
 }
 
 export default class WSTransport extends EventBus {
@@ -42,7 +43,7 @@ export default class WSTransport extends EventBus {
     }
 
     private setupPing() {
-        this.pingInterval = setInterval(() => {
+        this.pingInterval = window.setInterval(() => {
             this.send({ type: "ping" });
         }, 5000);
 
@@ -65,14 +66,30 @@ export default class WSTransport extends EventBus {
             this.emit(WSTransportEvents.Error, e);
         });
 
-        socket.addEventListener("message", (message) => {
-            const data = JSON.parse(message.data);
-
-            if (data.type && data.type === "pong") {
-                return;
-            }
-
-            this.emit(WSTransportEvents.Message, data);
+        socket.addEventListener("message", (event) => {
+            try {
+                const data = JSON.parse(event.data);
+                switch (data.type) {
+                    case 'connected': {
+                        this.emit(WSTransportEvents.Connected, data);
+                        break;
+                    }
+                    case 'user connected': {
+                        this.emit(WSTransportEvents.UserConnected, data);
+                        break;
+                    }
+                    case 'pong': {
+                        break;
+                    }
+                    case 'error': {
+                        this.emit(WSTransportEvents.Error, data);
+                        break;
+                    }
+                    default: {
+                        this.emit(WSTransportEvents.Message, data);
+                    }
+                }
+            } catch {}
         });
     }
 }

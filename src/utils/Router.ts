@@ -27,7 +27,6 @@ class Route {
     private readonly query: string) {
   }
 
-  //можно заменить на css
   leave() {
     this.block = null;
   }
@@ -101,7 +100,7 @@ class Router {
   //переходит на нужный роут и отображает нужный блок
   public go(pathname: string) {
     this.history.pushState({}, '', pathname);
-
+  
     this._onRoute(pathname);
   }
 

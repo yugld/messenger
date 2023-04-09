@@ -11,13 +11,20 @@ import { EditAvatar } from "../../components/editAvatar/editAvatar";
 
 
 interface ProfileProps {
-  title: string;
+  title?: string;
   classes?: string;
   url?: string;
   children?: {
     fields: Block[];
     footer: Block[];
   };
+  email:string;
+  login:string;
+  first_name:string;
+  second_name:string;
+  display_name:string;
+  phone:string;
+  avatar?: string;
 }
 
 class ProfileBase extends Block<ProfileProps> {
@@ -106,7 +113,8 @@ class ProfileBase extends Block<ProfileProps> {
   render() {
     return this.compile(template, {
       name: this.props.display_name || "Anonym",
-      props: this.props,
+      avatar: this.props.avatar,
+      props: this.props, 
     });
   }
 }

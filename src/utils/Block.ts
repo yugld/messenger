@@ -215,6 +215,7 @@ private _createDocumentElement(tagName: string) {
     return document.createElement(tagName);
   }
 
+
   show() {
     this.getContent()!.style.display = 'block';
   }

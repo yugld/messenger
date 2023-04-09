@@ -90,6 +90,6 @@ export class Login extends Block<LoginProps> {
   }
 
   render() {
-    return this.compile(template, { title: "Вход"});
+    return this.compile(template, { ...this.props, title: "Вход"});
   }
 }
