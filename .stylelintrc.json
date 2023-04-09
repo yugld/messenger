@@ -2,7 +2,13 @@
     "extends": "stylelint-config-standard-scss",
     "rules": {
       "color-hex-case": "lower",
-      "string-quotes": "single"
+      "string-quotes": "single",
+      "no-invalid-position-at-import-rule": null,
+      "no-descending-specificity": null,
+      "scss/dollar-variable-pattern": "/[a-z][a-zA-Z]+/",
+      "selector-class-pattern": null,
+      "no-duplicate-selectors": null,
+      "no-empty-source": null
     },
 
     "ignoreFiles": [
