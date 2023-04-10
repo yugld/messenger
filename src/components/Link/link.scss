@@ -1,0 +1,13 @@
+.link {
+  color: $color__secondary;
+  cursor: pointer;
+
+  &__red {
+    color: $color__error;
+
+    a {
+      color: $color__error;
+      background-color: $color__primary;
+    }
+  }
+}

@@ -3,7 +3,6 @@
         h1.sign-up_form__title=title
         form.sign-up_form__inputs.fields
             | !{fields}
-        .sign-up_form__buttons.actions
-            | !{actions}
-            a(href="/src/pages/sign-up/").sign-up_form__link-login
-            a.sign-up_form__link-signin(href="/login") Войти
+        .singin_form__buttons
+            | !{buttonSignup}
+            | !{link}

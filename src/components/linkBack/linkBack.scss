@@ -1,0 +1,17 @@
+.link_back {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin: auto 0;
+  
+  &_img {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &_back__reverse {
+    rotate: 180deg;
+    margin: 0;
+  }
+}

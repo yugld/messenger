@@ -1,15 +1,13 @@
-.page-profile.maim
+.page-profile.main
+    | !{linkToChats}
     .profile
         .profile_header
             .profile_header_avatar 
-                img(src=noAvavtarIcon, alt="avatar")
-            .profile_header_name Иван
+                | !{avatarProfile}
+            .profile_header_name=name
         .profile_info 
             | !{fields}
         .profile_buttons
-            .profile_buttons__changeData
-                a(href="/editProfile").link Изменить данные
-            .profile_buttons__changePassword
-                a(href="/editProfile").link Изменить пароль
-            .profile_buttons__logout
-                a(href="/").link__red Выйти
+            | !{links}
+            | !{links}
+            | !{exitLink}

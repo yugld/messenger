@@ -2,10 +2,8 @@ import Block from '../../utils/Block';
 import template from './buttonImg.pug';
 
 interface IButtonProps {
-  label: string;
-  events?: {
-    click: () => void;
-  };
+  label?: string;
+    events?: Record<string, EventListenerOrEventListenerObject>;
   classes?: string;
   url: string;
   type?: 'button' | 'submit';

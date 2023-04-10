@@ -1,4 +1,4 @@
-.block-center{
+.block-center {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -9,7 +9,7 @@
   padding: 30px;
   padding-top: 50px;
   width: 340px;
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+  box-shadow: 0 0 6px rgb(0 0 0 / 14%);
   border-radius: 12px;
 
   &__title {
@@ -18,7 +18,7 @@
     margin-bottom: 40px;
     text-align: center;
   }
-  
+
   &__inputs {
     margin-bottom: 45px;
   }
@@ -31,47 +31,54 @@
 
   &__link-signin {
     text-align: center;
-    color:$color__secondary;
+    color: $color__secondary;
   }
 }
 
-
 .title {
-    margin-bottom: 40px;
-    text-align: center;
-    font-size: 20px;
-  }
-  
-  .form {
-    margin-bottom: 62px;
-  }
-  
-  .actions {
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.form {
+  margin-bottom: 62px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sign-in__link {
+  text-align: center;
+  color: $color__secondary;
+}
+
+.singin_form {
+  padding: 30px;
+  padding-top: 50px;
+  width: 340px;
+  box-shadow: 0 0 6px rgb(0 0 0 / 14%);
+  border-radius: 12px;
+
+  &__buttons {
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
-  
-  .sign-in__link {
-    text-align: center;
-    color: $color__secondary
-  }
-  .singin_form {
-    padding: 30px;
-    padding-top: 50px;
-    width: 340px;
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
-    border-radius: 12px;
-  }
+}
 
-  .input {
-    border: none;
-    border-bottom: 1px solid $color__secondary;
-    height: 20px;
-    width: 100%;
-    margin-bottom: 30px;
-    &::placeholder {
-      font-size: 13px;
-      line-height: 13px;
-    }
+.input {
+  border: none;
+  border-bottom: 1px solid $color__secondary;
+  height: 20px;
+  width: 100%;
+  margin-bottom: 30px;
+
+  &::placeholder {
+    font-size: 13px;
+    line-height: 13px;
   }
+}

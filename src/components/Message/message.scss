@@ -1,0 +1,12 @@
+.message {
+  padding: 15px 10px;
+  margin: 15px 0;
+  max-width: 150px;
+  background: $background-color__recipient;
+  border-radius: 6px;
+}
+
+.mine {
+  align-self: flex-end;
+  background: $background-color__sender;
+}

@@ -5,11 +5,20 @@
   padding: 12px 70px;
   margin-bottom: 14px;
   border: none;
-  border-radius: 8px
+  border-radius: 8px;
 
-}
-//исправить?!
-a {
-color: $color__primary;
+  &:hover {
+    box-shadow: 0 0 3px $color__secondary;
+  }
+
+  a {
+    color: $color__primary;
+  }
 }
 
+.link__red {
+  a {
+    color: $color__error;
+    background-color: $color__primary;
+  }
+}

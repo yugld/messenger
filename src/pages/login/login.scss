@@ -1,4 +1,4 @@
-.block-center{
+.block-center {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -6,50 +6,64 @@
 }
 
 .login_form {
-padding: 30px;
-padding-top: 50px;
-width: 340px;
-box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
-border-radius: 12px;
+  padding: 30px;
+  padding-top: 50px;
+  width: 340px;
+  box-shadow: 0 0 6px rgb(0 0 0 / 14%);
+  border-radius: 12px;
 
-&__title {
-  font-size: 20px;
-  line-height: 20px;
-  margin-bottom: 40px;
-  text-align: center;
-}
+  &__title {
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+  }
 
-&__inputs {
-  margin-bottom: 159px;
-}
+  &__inputs {
+    margin-bottom: 159px;
+  }
 
-.input {
-  border: none;
-  border-bottom: 1px solid $color__secondary;
-  height: 20px;
-  width: 100%;
-  margin-bottom: 30px;
-  &::placeholder {
-    font-size: 13px;
-    line-height: 13px;
+  .button {
+    text-align: center;
+    background: $color__secondary;
+    display: block;
+    padding: 12px 70px;
+    margin-bottom: 14px;
+    border: none;
+    border-radius: 8px;
+
+    &:hover {
+      box-shadow: 0 0 3px $color__secondary;
+    }
+  }
+
+  .input {
+    border: none;
+    border-bottom: 1px solid $color__secondary;
+    height: 20px;
+    width: 100%;
+    margin-bottom: 30px;
+
+    &::placeholder {
+      font-size: 13px;
+      line-height: 13px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__link-signup {
+    text-align: center;
+    color: $color__secondary;
   }
 }
-
-&__buttons {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-&__btn {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-&__link-signup {
-  text-align: center;
-  color:$color__secondary;
-}
-}
-

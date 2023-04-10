@@ -1,0 +1,64 @@
+.chatlist_create__button{
+    padding: 10px 30px;
+}
+
+.chatlist {
+    min-width: 310px;
+    border-right: 1px solid $color__hover;
+    background-color: $background-color__secondary;
+    display: flex;
+    flex-direction: column;
+
+    &_header {
+        color: $text-color__secondary;
+        padding: 15px 10px;
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid $color__hover;
+        
+
+        .link_profile {
+            display: flex;
+            align-items: center;
+            align-self: flex-end;
+            color: $text-color__secondary;
+
+            :hover {
+                color: $color__secondary;
+            }
+        }
+
+        .create_chat{
+            margin-top: -19px;
+            margin-right: 150px;
+        }
+    }
+}
+
+.chatlist_header {
+    &_search {
+        position: relative;
+        height: 32px;
+        border-radius: 5px;
+        overflow: hidden;
+
+        &__input {
+        width: 100%;
+        height: 100%;
+        padding-left: 34px;
+        border: 0;
+        border-radius: 5px;
+        background-color: $background-color__input;
+        line-height: 12px;
+        }
+
+        &__img-search {
+        position: absolute;
+        width: 10%;
+        height: 100%;
+        pointer-events: none;
+        background: url('../../static/images/search.svg') no-repeat 50% 50%;
+        }
+    }
+}

@@ -7,6 +7,7 @@ import template from './input.pug';
 
 interface InputProps {
   label: string;
+  name?: string;
   idInput?: string;
   type?: string;
   events?: {
@@ -14,7 +15,7 @@ interface InputProps {
     focusin?: () => void;
     focusout?: (env: Event) => void;
   };
-  classes?: string[];
+  classes?: string;
   inputClasses?: string;
   valueInput?: string;
   errorText?: string;
@@ -62,7 +63,7 @@ export class Input extends Block<InputProps> {
       });
       if (!(arrClasses.indexOf('error_text') > 0)) {
         this.children.inputField.setProps({
-          classes: inputClasses.push('error_text'),
+          //classes: inputClasses.push('error_text'),
           valueInput: val,
         });
       } else {
@@ -81,9 +82,13 @@ export class Input extends Block<InputProps> {
         valueInput: val,
       });
     }
-
     return isValid;
   }
+  
+  setValue(value: string) {
+    return (this.element as HTMLInputElement).value = value;
+  }
+  
 
   render() {
     return this.compile(template, {

@@ -1,0 +1,21 @@
+.messenger
+    if selectedChat 
+        .chat-selected
+            .chat_header
+                | !{popupAdd}
+                | !{popupDelete}
+                | !{deleteChat}
+                | !{addUser}
+                | !{deleteUser}
+            .messenger-messages
+                each message in messages 
+                    |!{message}
+                else
+                    |Тут будут сообщения
+            .messenger-footer 
+                |!{input}
+                |!{button}
+    else 
+        |Выберите или создайте чат
+| !{popupAdd}
+| !{popupDelete}

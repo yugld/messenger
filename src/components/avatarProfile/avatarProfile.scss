@@ -1,0 +1,21 @@
+.avatar_profile{
+    position: relative;
+    display: block;
+    width: 130px;
+    height: 130px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+
+    &__img {
+        position: absolute;
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+        overflow: hidden;
+        object-fit: cover;
+    }
+
+    &-edit {
+        margin-bottom: 90px;
+    }
+}

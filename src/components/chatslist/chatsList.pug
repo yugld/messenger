@@ -1,0 +1,20 @@
+.chatlist
+    .chatlist_container
+        .chatlist_header
+            .link_profile
+                | !{linkToProfile}
+            .create_chat 
+                | !{buttonCreateChat}
+                | !{popupCreateChat}
+            .chatlist_header_search
+                label.chatlist_header_search__img-search
+                input.chatlist_header_search__input(type="text" placeholder="Поиск")
+        if isLoaded
+            .chatlist-item
+                each chat in chats 
+                    |!{chat}
+                else 
+                    | Создайте чат
+        else 
+                | Загружаем чаты...
+            

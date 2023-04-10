@@ -3,8 +3,12 @@ import template from './signup.pug';
 import { Button } from '../../components/button/button';
 import { Input } from '../../components/input/input';
 
+import { Link } from '../../components/Link/link';
+import { SignupData } from '../../api/types';
+import AuthController from '../../controllers/AuthController';
+
 interface SignUpProps {
-    title: string;
+    title?: string;
     classes?: string[];
     url?: string;
     children?: {
@@ -14,6 +18,9 @@ interface SignUpProps {
 }
 
 export class SignUp extends Block<SignUpProps> {
+  constructor() {
+    super({});
+  }
 
   init() {
     const fields = [
@@ -21,7 +28,7 @@ export class SignUp extends Block<SignUpProps> {
         label: 'Почта',
         idInput: 'email',
         type: 'text',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           click() { },
@@ -37,7 +44,7 @@ export class SignUp extends Block<SignUpProps> {
         label: 'Логин',
         idInput: 'login',
         type: 'text',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           focusin: () => {
@@ -52,7 +59,7 @@ export class SignUp extends Block<SignUpProps> {
         label: 'Имя',
         idInput: 'first_name',
         type: 'text',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           focusin: () => {
@@ -67,7 +74,7 @@ export class SignUp extends Block<SignUpProps> {
         label: 'Фамилия',
         idInput: 'second_name',
         type: 'text',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           focusin: () => {
@@ -82,7 +89,7 @@ export class SignUp extends Block<SignUpProps> {
         label: 'Телефон',
         idInput: 'phone',
         type: 'text',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           focusin: () => {
@@ -97,7 +104,7 @@ export class SignUp extends Block<SignUpProps> {
         label: 'Пароль',
         idInput: 'password',
         type: 'password',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           focusin: () => {
@@ -112,7 +119,7 @@ export class SignUp extends Block<SignUpProps> {
         label: 'Пароль (еще раз)',
         idInput: 'passwordYet',
         type: 'password',
-        classes: ['field'],
+        classes: 'field',
         inputClasses: 'input',
         events: {
           focusin: () => {
@@ -126,55 +133,37 @@ export class SignUp extends Block<SignUpProps> {
     ];
     this.children.fields = fields;
 
-    const buttons = [
-      new Button({
+    this.children.buttonSignup = new Button({
         label: 'Зарегистрироваться',
-        events: {
-          click: () => {
-            event.preventDefault();
-            const valid = this.children.fields.reduce((acc, val) => {
-              const result = val.checkValidate();
-              return acc && result;
-            }, true);
-            const emailUser = document.querySelector(
-              `#${this.children.fields[0].props.idInput}`,
-            )!.value;
-            const loginUser = document.querySelector(
-              `#${this.children.fields[1].props.idInput}`,
-            )!.value;
-            const firstNameUser = document.querySelector(
-              `#${this.children.fields[2].props.idInput}`,
-            )!.value;
-            const secondNameUser = document.querySelector(
-              `#${this.children.fields[3].props.idInput}`,
-            )!.value;
-            const phoneUser = document.querySelector(
-              `#${this.children.fields[4].props.idInput}`,
-            )!.value;
-            const passwordUser = document.querySelector(
-              `#${this.children.fields[5].props.idInput}`,
-            )!.value;
-            if (valid) {
-              console.log({
-                Почта: emailUser,
-                Логин: loginUser,
-                Имя: firstNameUser,
-                Фамилия: secondNameUser,
-                Телефон: phoneUser,
-                Пароль: passwordUser,
-              });
-            }
-          },
-        },
-        url: '',
-        classes: 'button main-button',
+        classes: 'button main-button sign-up_form__buttons actions',
         type: 'submit',
-      }),
-    ];
-    this.children.actions = buttons;
+        events: {
+          click: () => this.onSubmit(),
+        },
+    });
+
+    this.children.link = new Link({
+      label: 'Войти',
+      to: '/',
+      classes: 'sign-up_form__link-signin',
+    });
   }
 
+  onSubmit() {
+    const values = Object
+      .values(this.children.fields)
+      .filter(child => child instanceof Input)
+      .map((child) => ([
+        child._element.childNodes[1].name,
+        child._element.childNodes[1].value,
+      ]));
+
+    const data = Object.fromEntries(values);
+
+    AuthController.signup(data as SignupData);
+  }
+  
   render() {
-    return this.compile(template, { title: this.props.title });
+    return this.compile(template, { title: 'Регистрация' });
   }
 }

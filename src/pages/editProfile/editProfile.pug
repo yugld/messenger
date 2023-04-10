@@ -1,13 +1,9 @@
-.page-profile
+.page-profile.main 
+    | !{linkToProfile}
     .editProfile
         .editProfile_header
-            .editProfile_header_avatar
-                img(src=noAvavtarIcon alt="avatar")
-                form.editProfile_avatar_form
-                    label(for="avatar") Поменять аватар
-                    input(type="file" name="avatar")
-            .editProfile_header_name Иван
+            | !{avatar}
+            .editProfile_header_name=userName
         form.editProfile_info 
             | !{fields}
-        .editProfile_button.editProfile_button_saveData
-            | !{actions} 
+        | !{buttonSave} 
