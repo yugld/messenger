@@ -16,4 +16,17 @@ module.exports = merge(common, {
       chunkFilename: '[name].[contenthash:8].css',
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.(scss|css)$/,
+        use: [
+          'style-loader',
+          'css-loader', 
+          'postcss-loader', 
+          'sass-loader',
+        ],
+      },
+    ],
+  },
 });

@@ -1,26 +1,29 @@
-import { Link } from "./link";
+import { BaseLink as Link } from "./link";
 import { expect } from "chai";
 import Router from "../../utils/Router";
 import * as sinon from "sinon";
 
 describe("Link", () => {
+
+    const label = 'home';
+    const callback = sinon.stub();
+    const to = '/';
+
+    beforeEach(() => {
+        callback.reset();
+    });
+
     it("should render", () => {
-        new Link({ to: "/" });
+        new Link({ to: "/", label: 'label', router: {} as typeof Router });
     });
 
-    it("element should return acnhor tag", () => {
-        const link = new Link({ to: "/" });
-        const element = link.element;
-        expect(element).to.be.instanceof(window.HTMLAnchorElement);
-    });
+    it("should call Router.go with passed route on click", () => {
+        //@ts-ignore
+        const link = new Link({ to, label, router: { go: callback } as typeof Router });
 
-    it("should go to passed route on click", () => {
-        const link = new Link({ to: "/" });
-        const spy = sinon.spy(Router, "go");
-        const element = link.element as HTMLSpanElement;
+        link.element?.click();
+        
+        expect(callback.calledWith(to)).to.eq(true);
 
-        element.click();
-
-        expect(spy.calledOnce).to.eq(true);
     });
 });

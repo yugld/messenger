@@ -1,6 +1,5 @@
 import Block from '../../utils/Block';
 import { PropsWithRouter, withRouter } from '../../hocs/withRouter';
-//@ts-ignore
 import template from './link.pug';
 
 interface LinkProps extends PropsWithRouter {
@@ -10,7 +9,7 @@ interface LinkProps extends PropsWithRouter {
   events?: Record<string, EventListenerOrEventListenerObject>;
 }
 
-class BaseLink extends Block<LinkProps> {
+export class BaseLink extends Block<LinkProps> {
   constructor(props: LinkProps) {
     super({
       ...props,

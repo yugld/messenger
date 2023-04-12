@@ -1,17 +1,29 @@
 {
-    "exclude": ["dist", ".parcel-cache", "node_modules", "packages"],
-    "compilerOptions": {
-      "outDir": "./dist/",
-      "target": "ES2021",
-      "baseUrl": ".",
-      "typeRoots": ["./node_modules/@types", "./type-definitions"],
-      "moduleResolution": "node",
-      "module": "commonjs",
-      "resolveJsonModule": true,
-      "sourceMap": true,
-      "esModuleInterop": true,
-      "forceConsistentCasingInFileNames": true,
-      "skipLibCheck": true
-    }
+  "ts-node": {
+    "files": true
+  },
+  "exclude": [
+    "dist",
+    ".parcel-cache",
+    "node_modules",
+    "packages"
+  ],
+  "include": [
+    "./**/*.ts"
+  ],
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "target": "es2016",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
   }
-  
+}

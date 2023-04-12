@@ -22,7 +22,7 @@ function render(query: string, block: Block) {
   return root;
 }
 
-class Route {
+export class Route {
   private block: Block | null = null;
 
   constructor(

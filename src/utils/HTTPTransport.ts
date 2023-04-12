@@ -53,7 +53,8 @@ export default class HTTPTransport {
 
   private request<Response>(url: string, options: Options = { method: Method.Get }): Promise<Response> {
     const { method, data } = options;
-    const isFormData = data instanceof FormData;
+    
+    const isFormData = data as FormData;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
