@@ -12,5 +12,5 @@ export function withRouter(Component: typeof Block<any>) {
     constructor(props: Props & PropsWithRouter) {
       super({ ...props, router: Router });
     }
-  }
+  };
 }

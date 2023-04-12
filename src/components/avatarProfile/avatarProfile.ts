@@ -1,5 +1,5 @@
-import Block from "../../utils/Block";
-import template from "./avatarProfile.pug";
+import Block from '../../utils/Block';
+import template from './avatarProfile.pug';
 
 export interface EditAvatarProps {
     class?: string;
@@ -8,11 +8,11 @@ export interface EditAvatarProps {
 }
 
 export class AvatarProfile extends Block<EditAvatarProps> {
-    constructor(props: EditAvatarProps) {
-        super(props);
-    }
+  constructor(props: EditAvatarProps) {
+    super(props);
+  }
 
-    render() {
-        return this.compile(template, this.props);
-    }
+  render() {
+    return this.compile(template, this.props);
+  }
 }

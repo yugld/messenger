@@ -13,6 +13,7 @@ type Options = {
 
 export default class HTTPTransport {
   static API_URL = 'https://ya-praktikum.tech/api/v2';
+
   protected endpoint: string;
 
   constructor(endpoint: string) {
@@ -53,7 +54,7 @@ export default class HTTPTransport {
 
   private request<Response>(url: string, options: Options = { method: Method.Get }): Promise<Response> {
     const { method, data } = options;
-    
+
     const isFormData = data instanceof FormData;
 
     return new Promise((resolve, reject) => {
@@ -75,9 +76,8 @@ export default class HTTPTransport {
       xhr.ontimeout = () => reject({ reason: 'timeout' });
 
       if (!isFormData) {
-        xhr.setRequestHeader("Content-Type", "application/json");
-      };
-
+        xhr.setRequestHeader('Content-Type', 'application/json');
+      }
 
       xhr.withCredentials = true;
       xhr.responseType = 'json';

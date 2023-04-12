@@ -1,4 +1,4 @@
-//@ts-nocheck
+// @ts-nocheck
 import './style/main.scss';
 
 import { Login } from './pages/login/login';
@@ -26,41 +26,39 @@ enum Routes {
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
-    Router
-        .use(Routes.Index, Login)
-        .use(Routes.Login, Login)
-        .use(Routes.SignUp, SignUp)
-        .use(Routes.Profile, Profile)
-        .use(Routes.EditProfile, EditProfile)
-        .use(Routes.EditPassword, EditPassword)
-        .use(Routes.Messenger, MessengerPage)
-        .use(Routes.Error404, Error404 )
-        .use(Routes.Error500, Error500)
+  Router
+    .use(Routes.Index, Login)
+    .use(Routes.Login, Login)
+    .use(Routes.SignUp, SignUp)
+    .use(Routes.Profile, Profile)
+    .use(Routes.EditProfile, EditProfile)
+    .use(Routes.EditPassword, EditPassword)
+    .use(Routes.Messenger, MessengerPage)
+    .use(Routes.Error404, Error404)
+    .use(Routes.Error500, Error500);
 
+  let isProtectedRoute = true;
 
-    let isProtectedRoute = true;
+  switch (window.location.pathname) {
+    case Routes.Index:
+    case Routes.SignUp:
+      isProtectedRoute = false;
+      break;
+  }
 
-    switch (window.location.pathname) {
-        case Routes.Index:
-        case Routes.SignUp:
-            isProtectedRoute = false;
-            break;
+  try {
+    await AuthController.fetchUser();
+
+    Router.start();
+
+    if (!isProtectedRoute) {
+      Router.go(Routes.Profile);
     }
+  } catch (e) {
+    Router.start();
 
-    try {
-        await AuthController.fetchUser();
-
-        Router.start();
-
-        if (!isProtectedRoute) {
-            Router.go(Routes.Profile)
-        }
-    } catch (e) {
-        Router.start();
-
-        if (isProtectedRoute) {
-            Router.go(Routes.Index);
-        }
+    if (isProtectedRoute) {
+      Router.go(Routes.Index);
     }
-
+  }
 });

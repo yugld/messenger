@@ -14,7 +14,7 @@ export class BaseLink extends Block<LinkProps> {
     super({
       ...props,
       events: {
-        click: () => this.navigate()
+        click: () => this.navigate(),
       },
     });
   }

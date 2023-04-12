@@ -17,7 +17,6 @@ interface SignUpProps {
     };
 }
 
-
 export class SignUp extends Block<SignUpProps> {
   constructor() {
     super({});
@@ -135,12 +134,12 @@ export class SignUp extends Block<SignUpProps> {
     this.children.fields = fields;
 
     this.children.buttonSignup = new Button({
-        label: 'Зарегистрироваться',
-        classes: 'button main-button sign-up_form__buttons actions',
-        type: 'submit',
-        events: {
-          click: () => this.onSubmit(),
-        },
+      label: 'Зарегистрироваться',
+      classes: 'button main-button sign-up_form__buttons actions',
+      type: 'submit',
+      events: {
+        click: () => this.onSubmit(),
+      },
     });
 
     this.children.link = new Link({
@@ -153,7 +152,7 @@ export class SignUp extends Block<SignUpProps> {
   onSubmit() {
     const values = Object
       .values(this.children.fields)
-      .filter(child => child instanceof Input)
+      .filter((child) => child instanceof Input)
       .map((child) => ([
         child._element.childNodes[1].name,
         child._element.childNodes[1].value,
@@ -163,7 +162,7 @@ export class SignUp extends Block<SignUpProps> {
 
     AuthController.signup(data as SignupData);
   }
-  
+
   render() {
     return this.compile(template, { title: 'Регистрация' });
   }

@@ -5,12 +5,12 @@ import { Input } from '../../components/input/input';
 import { DataField } from '../../components/dataField/dataField';
 import noAvavtarIcon from '../../../static/images/avatar_no.svg';
 
-import { LinkBack } from "../../components/linkBack/linkBack";
+import { LinkBack } from '../../components/linkBack/linkBack';
 
-import { withStore } from "../../utils/Store";
-import UserController from "../../controllers/UserController";
+import { withStore } from '../../utils/Store';
+import UserController from '../../controllers/UserController';
 import { ChangePasswordData } from '../../api/types';
-import { getData } from "../../utils/getData";
+import { getData } from '../../utils/getData';
 
 interface IEditProfileProps {
   title: string;
@@ -26,7 +26,6 @@ interface IEditProfileProps {
 }
 
 export class EditPasswordBase extends Block<IEditProfileProps> {
-
   constructor(props: IEditProfileProps) {
     super(props);
   }
@@ -73,13 +72,13 @@ export class EditPasswordBase extends Block<IEditProfileProps> {
     this.children.fields = fields;
 
     this.children.linkToProfile = new LinkBack({
-      to:'/profile',
+      to: '/profile',
       classes: 'link_back',
     });
 
     this.children.buttonSave = new Button({
       label: 'Сохранить',
-      type: "submit",
+      type: 'submit',
       classes: 'button main-button editProfile_button editProfile_button_saveData',
       events: {
         click: (e: Event) => this.onSubmit(e),
@@ -89,10 +88,10 @@ export class EditPasswordBase extends Block<IEditProfileProps> {
 
   async onSubmit(e: Event) {
     e.preventDefault();
-    const data = getData(this.getContent()?.querySelector(".editProfile_info"));
+    const data = getData(this.getContent()?.querySelector('.editProfile_info'));
 
     console.log(data);
-    
+
     await UserController.changePassword(data as ChangePasswordData);
   }
 

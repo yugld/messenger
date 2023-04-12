@@ -10,22 +10,22 @@ interface ILinkProps extends PropsWithRouter {
 }
 
 class Link extends Block<ILinkProps> {
-    constructor(props: ILinkProps) {
-        super({
-            ...props,
-            events: {
-                click: () => this.navigate()
-            },
-        });
-    }
+  constructor(props: ILinkProps) {
+    super({
+      ...props,
+      events: {
+        click: () => this.navigate(),
+      },
+    });
+  }
 
-    navigate() {
-        this.props.router.go(this.props.to);
-    }
+  navigate() {
+    this.props.router.go(this.props.to);
+  }
 
-    render() {
-        return this.compile(template, this.props);
-    }
+  render() {
+    return this.compile(template, this.props);
+  }
 }
 
 export const LinkBack = withRouter(Link);

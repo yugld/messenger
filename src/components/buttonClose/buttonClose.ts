@@ -6,11 +6,11 @@ export interface ButtonCloseProps {
 }
 
 export class ButtonClose extends Block<ButtonCloseProps> {
-    constructor(props: ButtonCloseProps) {
-        super(props);
-    }
+  constructor(props: ButtonCloseProps) {
+    super(props);
+  }
 
-    render() {
-        return this.compile(template, this.props);
-    }
+  render() {
+    return this.compile(template, this.props);
+  }
 }

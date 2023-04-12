@@ -27,7 +27,6 @@ interface InputProps {
 }
 
 export class Input extends Block<InputProps> {
-
   init() {
     this.children.inputField = new InputField({
       idInput: this.props.idInput,
@@ -64,7 +63,7 @@ export class Input extends Block<InputProps> {
       });
       if (!(arrClasses.indexOf('error_text') > 0)) {
         this.children.inputField.setProps({
-          //classes: inputClasses.push('error_text'),
+          // classes: inputClasses.push('error_text'),
           valueInput: val,
         });
       } else {
@@ -89,7 +88,6 @@ export class Input extends Block<InputProps> {
   setValue(value: string) {
     return (this.element as HTMLInputElement).value = value;
   }
-
 
   render() {
     return this.compile(template, {
