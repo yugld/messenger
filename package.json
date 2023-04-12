@@ -17,14 +17,13 @@
   },
   "homepage": "https://github.com/yugld/middle.messenger.praktikum.yandex#readme",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack serve --config webpack.conf.dev.js --open",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.conf.prod.js",
+    "dev": "webpack serve --config webpack.conf.dev.js --open",
+    "build": "webpack --config webpack.conf.prod.js",
     "build:container": "docker build -t chat-app .",
     "start": "npm run build && node ./server.js ",
     "lint": "eslint . --ext .ts --fix",
     "lint:style": "stylelint **/*.scss --fix",
-    "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'",
-    "prepare": "husky install"
+    "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'"
   },  
   "devDependencies": {
     "@parcel/transformer-pug": "^2.8.2",

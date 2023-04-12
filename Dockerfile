@@ -1,14 +1,14 @@
-FROM node:16-alpine
+FROM node:18-alpine
 
-WORKDIR /var/www/app
+WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json ./
 
-RUN yarn install
+RUN npm install
 
 COPY . .
 
-RUN yarn build
+RUN npm run build
 
 EXPOSE 3000
 
