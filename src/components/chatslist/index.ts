@@ -46,7 +46,7 @@ class ChatsListBase extends Block<ChatsListProps> {
       type: "submit",
       classes: "button chatlist_create__button",
       events: {
-          click: () => (this.children.popupCreateChat as PopupCreate).show(),
+        click: () => (this.children.popupCreateChat as PopupCreate).show(),
       },
     });
 
@@ -65,7 +65,7 @@ class ChatsListBase extends Block<ChatsListProps> {
     });*/
   }
 
-  protected componentDidUpdate( oldProps: ChatsListProps, newProps: ChatsListProps ): boolean {
+  protected componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): boolean {
     this.children.chats = this.createChats(newProps);
     return true;
   }

@@ -71,7 +71,7 @@ export class EditPasswordBase extends Block<IEditProfileProps> {
     this.children.fields = fields;
 
     this.children.linkToProfile = new LinkBack({
-      to:'/profile',
+      to: '/profile',
       classes: 'link_back',
     });
 
@@ -90,7 +90,7 @@ export class EditPasswordBase extends Block<IEditProfileProps> {
     const data = getData(this.getContent()?.querySelector(".editProfile_info"));
 
     console.log(data);
-    
+
     await UserController.changePassword(data as ChangePasswordData);
   }
 

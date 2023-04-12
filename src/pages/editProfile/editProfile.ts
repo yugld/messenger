@@ -105,7 +105,7 @@ export class EditProfileBase extends Block<IEditProfileProps> {
     this.children.fields = fields;
 
     this.children.linkToProfile = new LinkBack({
-      to:'/profile',
+      to: '/profile',
       classes: 'link_back',
     });
 
@@ -122,7 +122,7 @@ export class EditProfileBase extends Block<IEditProfileProps> {
   async onSubmit(e: Event) {
     e.preventDefault();
     const data = getData(this.getContent()?.querySelector(".editProfile_info"));
-  
+
     console.log(data);
     await UserController.changeUser(data as ChangeUserData);
   }

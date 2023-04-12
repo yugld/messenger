@@ -109,7 +109,7 @@ abstract class Block<P extends Record<string, any> = any> {
     }
   }
 
-  protected componentDidUpdate(oldProps: P, newProps: P) {
+  protected componentDidUpdate(_oldProps: P, _newProps: P) {
     return true;
   }
 
@@ -211,10 +211,6 @@ abstract class Block<P extends Record<string, any> = any> {
     });
   }
 
-private _createDocumentElement(tagName: string) {
-    return document.createElement(tagName);
-  }
-
 
   show() {
     this.getContent()!.style.display = 'block';
@@ -224,16 +220,6 @@ private _createDocumentElement(tagName: string) {
     this.getContent()!.style.display = 'none';
   }
 
-  private _addEvents() {
-    const { events = {} } = this.props as {
-      events: Record<string, () => void>;
-    };
-
-    Object.keys(events).forEach((eventName) => {
-      this._element?.addEventListener(eventName, events[eventName]);
-    });
-  }
-
   private _addClass() {
     const { classes = '' } = this.props;
     if (!classes) {
@@ -241,7 +227,7 @@ private _createDocumentElement(tagName: string) {
     }
 
     const arr = classes.split(' ');
-    arr.forEach((className) => {
+    arr.forEach((className: any) => {
       this._element!.classList.add(className);
     });
   }
