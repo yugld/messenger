@@ -10,7 +10,7 @@
   ],
   "include": [
     "./**/*.ts"
-  ],
+, "server.js"  ],
   "compilerOptions": {
     "outDir": "./dist/",
     "target": "es2016",
