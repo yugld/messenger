@@ -1,5 +1,7 @@
 import Block from "../../utils/Block";
 import template from "./chatsList.pug";
+import router from "../../utils/Router";
+import { store } from "../../utils/Store";
 
 import { withStore } from "../../utils/Store";
 import { ChatInfo } from "../../api/ChatsAPI";

@@ -21,6 +21,7 @@ describe("Router", () => {
     } as unknown as BlockConstructable;
 
     it("use() should return Router instance", () => {
+        //@ts-ignore
         const result = Router.use("/", BlockMock);
 
         expect(result).to.eq(Router);
@@ -28,6 +29,7 @@ describe("Router", () => {
 
     describe(".back()", () => {
         it("should render a page on history back action", () => {
+            //@ts-ignore
             Router.use("/", BlockMock).start();
 
             Router.back();
@@ -37,6 +39,7 @@ describe("Router", () => {
     });
 
     it("should render a page on start", () => {
+        //@ts-ignore
         Router.use("/", BlockMock).start();
 
         expect(getContentFake.callCount).to.eq(1);

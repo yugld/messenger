@@ -2,6 +2,7 @@ import Block from '../../utils/Block';
 import template from './popup.pug';
 import { Button } from '../button/button';
 import { ButtonClose } from '../buttonClose/buttonClose';
+import { getData } from "../../utils/getData";
 
 import { Input } from '../input/input';
 import ChatsController from "../../controllers/ChatsController";

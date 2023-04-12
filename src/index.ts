@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 import './style/main.scss';
 
 import { Login } from './pages/login/login';

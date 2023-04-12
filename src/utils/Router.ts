@@ -27,7 +27,7 @@ export class Route {
 
   constructor(
     private pathname: string,
-    private readonly blockClass: BlockConstructable,
+    private readonly blockClass: typeof Block,
     private readonly query: string) {
   }
 
@@ -67,7 +67,7 @@ class Router {
 
   //регистрирует блок по пути в роут и возвращает себя —
   // чтобы можно было выстроить в цепочку
-  public use(pathname: string, block: BlockConstructable) {
+  public use(pathname: string, block: typeof Block) {
     const route = new Route(pathname, block, this.rootQuery);
     this.routes.push(route);
 

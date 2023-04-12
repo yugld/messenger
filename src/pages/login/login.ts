@@ -7,7 +7,17 @@ import { Link } from '../../components/Link/link';
 import { SigninData } from '../../api/types';
 import AuthController from '../../controllers/AuthController';
 
-export class Login extends Block {
+interface LoginProps {
+  title?: string;
+  classes?: string[];
+  url?: string;
+  children?: {
+      fields: Block[];
+      footer: Block[];
+  };
+}
+
+export class Login extends Block<LoginProps> {
   constructor() {
     super({});
   }

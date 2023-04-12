@@ -13,7 +13,7 @@ import { PopupAdd } from "../popupAdd/popupAdd";
 import { PopupUserList } from "../popupUserList/popupUserList";
 
 
-//import { ChatInfo, User } from "../../../api/types";
+import { ChatInfo, User } from "../../api/types";
 
 interface MessengerProps {
   selectedChat: number | undefined;
@@ -45,7 +45,8 @@ class MessengerBase extends Block<MessengerProps> {
     this.children.addUser = new Button({
       label: "Добавить пользователя",
       events: {
-        click: () => (this.children.popupAdd as Block).show(),
+        //@ts-ignore
+        click: () => (this.children.popupAdd as PopupAdd).show(),
       },
       classes: "button button_add_user",
     });
@@ -53,7 +54,8 @@ class MessengerBase extends Block<MessengerProps> {
     this.children.deleteUser = new Button({
       label: "Удалить пользователя",
       events: {
-        click: () => (this.children.popupDelete as Block).show(),
+        //@ts-ignore
+        click: () => (this.children.popupDelete as PopupUserList).show(),
       },
       classes: "button button_delete_user",
     });

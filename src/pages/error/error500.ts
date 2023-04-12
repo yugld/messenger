@@ -3,11 +3,14 @@ import template from './error500.pug';
 
 import { Link } from "../../components/Link/link";
 
-/*interface Error500Props {
+interface Error500Props {
   title: string;
-}*/
+}
 
 export class Error500 extends Block {
+  constructor(props: Error500Props) {
+    super(props);
+  }
 
   init(): void {
     this.children.link = new Link({

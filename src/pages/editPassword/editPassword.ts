@@ -27,9 +27,9 @@ interface IEditProfileProps {
 
 export class EditPasswordBase extends Block<IEditProfileProps> {
 
-  /*constructor(props: IEditProfileProps) {
+  constructor(props: IEditProfileProps) {
     super(props);
-  }*/
+  }
 
   init() {
     const fields = [

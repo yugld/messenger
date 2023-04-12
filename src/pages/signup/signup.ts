@@ -7,7 +7,7 @@ import { Link } from '../../components/Link/link';
 import { SignupData } from '../../api/types';
 import AuthController from '../../controllers/AuthController';
 
-/*interface SignUpProps {
+interface SignUpProps {
     title?: string;
     classes?: string[];
     url?: string;
@@ -15,10 +15,10 @@ import AuthController from '../../controllers/AuthController';
         fields: Block[];
         footer: Block[];
     };
-    
-}*/
+}
 
-export class SignUp extends Block {
+
+export class SignUp extends Block<SignUpProps> {
   constructor() {
     super({});
   }
