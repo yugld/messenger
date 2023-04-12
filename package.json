@@ -24,7 +24,12 @@
     "lint": "eslint . --ext .ts --fix",
     "lint:style": "stylelint **/*.scss --fix",
     "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'"
-  },  
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm-run-all lint test tsc:check"
+    }
+  },
   "devDependencies": {
     "@parcel/transformer-pug": "^2.8.2",
     "@parcel/transformer-sass": "^2.8.2",
@@ -47,6 +52,7 @@
     "eslint-config-airbnb": "^19.0.4",
     "express": "4.18.2",
     "html-webpack-plugin": "5.5.0",
+    "husky": "^8.0.3",
     "jsdom": "^21.1.1",
     "lint-staged": "13.1.x",
     "mini-css-extract-plugin": "2.7.5",
