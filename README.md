@@ -4,7 +4,7 @@
 
 ## Описание проекта
 
-Ссылка на [pull request](https://github.com/yugld/middle.messenger.praktikum.yandex/pull/5)
+Ссылка на [pull request](https://github.com/yugld/middle.messenger.praktikum.yandex/pull/6)
 
 Приложение развернуто на сервисе [netlify](https://meek-taiyaki-afa351.netlify.app)
 
