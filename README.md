@@ -7,7 +7,7 @@
 Ссылка на [pull request](https://github.com/yugld/middle.messenger.praktikum.yandex/pull/6)
 
 Приложение развернуто на сервисе [netlify](https://meek-taiyaki-afa351.netlify.app)
-и на [render](https://messenger-cab0.onrender.com)
+и на [render](https://messenger-cab0.onrender.com) с использованием Docker
 
 
 Макет приложения взят из задания [figma](https://www.figma.com/file/l909hSsb2cqiuzq1uCZGBJ/Chat_external_link-(Copy)?node-id=0%3A1&t=ru1DWbDG1YCChMBg-0)
