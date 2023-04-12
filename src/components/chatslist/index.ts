@@ -1,8 +1,6 @@
 import Block from "../../utils/Block";
 import template from "./chatsList.pug";
 
-import router from "../../utils/Router";
-import { store } from "../../utils/Store";
 import { withStore } from "../../utils/Store";
 import { ChatInfo } from "../../api/ChatsAPI";
 import ChatsController from "../../controllers/ChatsController";
@@ -46,7 +44,7 @@ class ChatsListBase extends Block<ChatsListProps> {
       type: "submit",
       classes: "button chatlist_create__button",
       events: {
-        click: () => (this.children.popupCreateChat as PopupCreate).show(),
+          click: () => (this.children.popupCreateChat as PopupCreate).show(),
       },
     });
 
@@ -65,8 +63,8 @@ class ChatsListBase extends Block<ChatsListProps> {
     });*/
   }
 
-  protected componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): boolean {
-    this.children.chats = this.createChats(newProps);
+  protected componentDidUpdate( _oldProps: ChatsListProps, _newProps: ChatsListProps ): boolean {
+    this.children.chats = this.createChats(_newProps);
     return true;
   }
 

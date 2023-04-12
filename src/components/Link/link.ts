@@ -1,5 +1,6 @@
 import Block from '../../utils/Block';
 import { PropsWithRouter, withRouter } from '../../hocs/withRouter';
+//@ts-ignore
 import template from './link.pug';
 
 interface LinkProps extends PropsWithRouter {

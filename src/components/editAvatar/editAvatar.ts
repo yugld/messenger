@@ -22,7 +22,7 @@ export class EditAvatarBase extends Block<EditAvatarProps> {
 
     createAvatarButton(props: EditAvatarProps) {
         return new ButtonEditAvatar({
-            classes: props.class,
+            //classes: props.class,
             avatar: `https://ya-praktikum.tech/api/v2/resources${props.avatar}`,
             events: {
                 click: () => {

@@ -4,7 +4,6 @@ import { Button } from '../button/button';
 import { ButtonClose } from '../buttonClose/buttonClose';
 
 import { Input } from '../input/input';
-import { getData } from "../../utils/getData";
 import ChatsController from "../../controllers/ChatsController";
 
 export interface PopupCreateProps {
@@ -47,16 +46,7 @@ export class PopupCreate extends Block<PopupCreateProps> {
         });
 
     }
-
-    /*async onSubmit(e: Event) {
-        e.preventDefault();
-        const form = this.getContent()?.querySelector('.popup_form') as HTMLFormElement| null;
-        const data = getData(form);
-        console.log(data);
-        await ChatsController.create(data);
-        this.hide();
-    }*/
-
+    
     render() {
         return this.compile(template, {});
     }

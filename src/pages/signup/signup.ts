@@ -7,17 +7,18 @@ import { Link } from '../../components/Link/link';
 import { SignupData } from '../../api/types';
 import AuthController from '../../controllers/AuthController';
 
-interface SignUpProps {
-  title?: string;
-  classes?: string[];
-  url?: string;
-  children?: {
-    fields: Block[];
-    footer: Block[];
-  };
-}
+/*interface SignUpProps {
+    title?: string;
+    classes?: string[];
+    url?: string;
+    children?: {
+        fields: Block[];
+        footer: Block[];
+    };
+    
+}*/
 
-export class SignUp extends Block<SignUpProps> {
+export class SignUp extends Block {
   constructor() {
     super({});
   }
@@ -36,7 +37,7 @@ export class SignUp extends Block<SignUpProps> {
             const loginL = document.querySelector(
               `#${this.children.fields[0].props.idInput}`,
             );
-            loginL?.classList.remove(ERROR_TEXT);
+            loginL?.classList.remove();
           },
         },
       }),
@@ -51,7 +52,7 @@ export class SignUp extends Block<SignUpProps> {
             const loginL = document.querySelector(
               `#${this.children.fields[1].props.idInput}`,
             );
-            loginL?.classList.remove(ERROR_TEXT);
+            loginL?.classList.remove();
           },
         },
       }),
@@ -66,7 +67,7 @@ export class SignUp extends Block<SignUpProps> {
             const loginL = document.querySelector(
               `#${this.children.fields[2].props.idInput}`,
             );
-            loginL?.classList.remove(ERROR_TEXT);
+            loginL?.classList.remove();
           },
         },
       }),
@@ -81,7 +82,7 @@ export class SignUp extends Block<SignUpProps> {
             const loginL = document.querySelector(
               `#${this.children.fields[3].props.idInput}`,
             );
-            loginL?.classList.remove(ERROR_TEXT);
+            loginL?.classList.remove();
           },
         },
       }),
@@ -96,7 +97,7 @@ export class SignUp extends Block<SignUpProps> {
             const loginL = document.querySelector(
               `#${this.children.fields[4].props.idInput}`,
             );
-            loginL?.classList.remove(ERROR_TEXT);
+            loginL?.classList.remove();
           },
         },
       }),
@@ -111,7 +112,7 @@ export class SignUp extends Block<SignUpProps> {
             const loginL = document.querySelector(
               `#${this.children.fields[5].props.idInput}`,
             );
-            loginL?.classList.remove(ERROR_TEXT);
+            loginL?.classList.remove();
           },
         },
       }),
@@ -126,7 +127,7 @@ export class SignUp extends Block<SignUpProps> {
             const loginL = document.querySelector(
               `#${this.children.fields[6].props.idInput}`,
             );
-            loginL?.classList.remove(ERROR_TEXT);
+            loginL?.classList.remove();
           },
         },
       }),
@@ -134,12 +135,12 @@ export class SignUp extends Block<SignUpProps> {
     this.children.fields = fields;
 
     this.children.buttonSignup = new Button({
-      label: 'Зарегистрироваться',
-      classes: 'button main-button sign-up_form__buttons actions',
-      type: 'submit',
-      events: {
-        click: () => this.onSubmit(),
-      },
+        label: 'Зарегистрироваться',
+        classes: 'button main-button sign-up_form__buttons actions',
+        type: 'submit',
+        events: {
+          click: () => this.onSubmit(),
+        },
     });
 
     this.children.link = new Link({
@@ -162,7 +163,7 @@ export class SignUp extends Block<SignUpProps> {
 
     AuthController.signup(data as SignupData);
   }
-
+  
   render() {
     return this.compile(template, { title: 'Регистрация' });
   }

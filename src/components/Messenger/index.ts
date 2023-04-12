@@ -13,7 +13,7 @@ import { PopupAdd } from "../popupAdd/popupAdd";
 import { PopupUserList } from "../popupUserList/popupUserList";
 
 
-import { ChatInfo, User } from "../../../api/types";
+//import { ChatInfo, User } from "../../../api/types";
 
 interface MessengerProps {
   selectedChat: number | undefined;
@@ -26,7 +26,6 @@ class MessengerBase extends Block<MessengerProps> {
     super(props);
   }
   protected init() {
-    //this.children.chatHeader = this.createChatHeader(this.props);
     this.children.popupAdd = new PopupAdd({});
     this.children.popupDelete = new PopupUserList({});
 
@@ -46,7 +45,7 @@ class MessengerBase extends Block<MessengerProps> {
     this.children.addUser = new Button({
       label: "Добавить пользователя",
       events: {
-        click: () => (this.children.popupAdd as PopupAdd).show(),
+        click: () => (this.children.popupAdd as Block).show(),
       },
       classes: "button button_add_user",
     });
@@ -54,7 +53,7 @@ class MessengerBase extends Block<MessengerProps> {
     this.children.deleteUser = new Button({
       label: "Удалить пользователя",
       events: {
-        click: () => (this.children.popupDelete as PopupUserList).show(),
+        click: () => (this.children.popupDelete as Block).show(),
       },
       classes: "button button_delete_user",
     });
@@ -88,10 +87,10 @@ class MessengerBase extends Block<MessengerProps> {
   }
 
   protected componentDidUpdate(
-    oldProps: MessengerProps,
-    newProps: MessengerProps
+    _oldProps: MessengerProps,
+    _newProps: MessengerProps
   ): boolean {
-    this.children.messages = this.createMessages(newProps);
+    this.children.messages = this.createMessages(_newProps);
 
     return true;
   }
@@ -102,12 +101,8 @@ class MessengerBase extends Block<MessengerProps> {
     });
   }
 
-  createChatHeader(props: MessengerProps) {
-    return new ChatHeader(props);
-  }
 
-
-  protected render(): DocumentFragment {
+  render(): DocumentFragment {
     return this.compile(template, { ...this.props });
   }
 }

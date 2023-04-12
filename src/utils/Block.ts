@@ -1,7 +1,8 @@
 import { EventBus } from "./EventBus";
 import { nanoid } from "nanoid";
 
-abstract class Block<P extends Record<string, any> = any> {
+class Block<P extends Record<string, any> = any> {
+  
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -60,16 +61,6 @@ abstract class Block<P extends Record<string, any> = any> {
     return { props: props as P, children };
   }
 
-  private _addEvents() {
-    const { events = {} } = this.props as P & {
-      events: Record<string, () => void>;
-    };
-
-    Object.keys(events).forEach((eventName) => {
-      this._element?.addEventListener(eventName, events[eventName]);
-    });
-  }
-
   _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
@@ -108,12 +99,11 @@ abstract class Block<P extends Record<string, any> = any> {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
-
   protected componentDidUpdate(_oldProps: P, _newProps: P) {
     return true;
   }
 
-  setProps = (nextProps: Partial<P>) => {
+  public setProps = (nextProps: any) => {
     if (!nextProps) {
       return;
     }
@@ -211,7 +201,6 @@ abstract class Block<P extends Record<string, any> = any> {
     });
   }
 
-
   show() {
     this.getContent()!.style.display = 'block';
   }
@@ -220,6 +209,15 @@ abstract class Block<P extends Record<string, any> = any> {
     this.getContent()!.style.display = 'none';
   }
 
+  private _addEvents() {
+    const { events = {} } = this.props as P & {
+      events: Record<string, () => void>;
+    };
+
+    Object.keys(events).forEach((eventName) => {
+      this._element?.addEventListener(eventName, events[eventName]);
+    });
+  }
   private _addClass() {
     const { classes = '' } = this.props;
     if (!classes) {

@@ -36,14 +36,15 @@ export class PopupAddUserToChatBase extends Block<PopupAddUserToChatProps> {
         this.children.input = new Input({
             label: '',
             name: "user_name",
+            idInput: 'messenger',
             type: 'text',
             inputClasses: 'input input_add_user',
             events: {
                 focusin: () => {
                     const messageText = document.querySelector(
-                        `#${this.children.input.props.idInput}`,
+                        `#${this.children.input[0].props.idInput}`,
                     );
-                    messageText?.classList.remove(ERROR_TEXT);
+                    messageText?.classList.remove();
                 },
             },
         });

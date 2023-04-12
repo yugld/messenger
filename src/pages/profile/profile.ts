@@ -18,12 +18,12 @@ interface ProfileProps {
     fields: Block[];
     footer: Block[];
   };
-  email: string;
-  login: string;
-  first_name: string;
-  second_name: string;
-  display_name: string;
-  phone: string;
+  email:string;
+  login:string;
+  first_name:string;
+  second_name:string;
+  display_name:string;
+  phone:string;
   avatar?: string;
 }
 
@@ -82,7 +82,7 @@ class ProfileBase extends Block<ProfileProps> {
     this.children.fields = fields;
 
     this.children.linkToChats = new LinkBack({
-      to: '/messenger',
+      to:'/messenger',
       classes: 'link_back',
     });
 
@@ -116,9 +116,9 @@ class ProfileBase extends Block<ProfileProps> {
     return this.compile(template, {
       name: this.props.display_name || "Anonym",
       avatar: this.props.avatar,
-      props: this.props,
+      props: this.props, 
     });
   }
 }
 
-export const Profile = withStore((state) => { return state.user || {}; })(ProfileBase);
+export const Profile = withStore((state) => { return state.user || {};})(ProfileBase as unknown as typeof Block);

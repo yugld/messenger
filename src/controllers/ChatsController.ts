@@ -21,7 +21,7 @@ class ChatsController {
     async fetchChats() {
         const chats = await this.api.read();
         chats.map(async (chat) => {
-            const token = await this.getToken(chat.id);
+            const token: any = await this.getToken(chat.id);
 
             await MessagesController.connect(chat.id, token);
         });
@@ -40,7 +40,7 @@ class ChatsController {
             await this.api.deleteUsers(id, [userId]);
             const userList = await this.api.getUsers(id);
             store.set("selectedChatUserList", userList);
-        } catch (e) {
+        } catch (e: any) {
             console.error(e.message);
         }
     }
@@ -50,7 +50,7 @@ class ChatsController {
             await this.api.delete(id);
             this.fetchChats();
             store.set("selectedChat", undefined);
-        } catch (e) {
+        } catch (e: any) {
             console.error(e.message);
         }
     }
@@ -60,7 +60,7 @@ class ChatsController {
             const userList = await this.api.getUsers(id);
             store.set("selectedChatUserList", userList);
             store.set("selectedChat", id);
-        } catch (e) {
+        } catch (e: any) {
             console.error(e.message);
         }
     }
@@ -68,7 +68,7 @@ class ChatsController {
     getToken(id: number) {
         try {
             return this.api.getToken(id);
-        } catch (e) {
+        } catch (e: any) {
             console.error(e.message);
         }
     }

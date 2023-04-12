@@ -3,7 +3,6 @@ import template from "./messenger.pug";
 import { ChatsList } from "../../components/chatslist";
 import { Messenger } from "../../components/Messenger/index";
 import ChatsController from "../../controllers/ChatsController";
-import "./styles.scss";
 
 export class MessengerPage extends Block {
   constructor() {

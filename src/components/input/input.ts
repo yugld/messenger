@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Block from '../../utils/Block';
 import { Validation } from '../../utils/validation';
 import { InputField } from '../inputField/inputField';
@@ -84,11 +85,11 @@ export class Input extends Block<InputProps> {
     }
     return isValid;
   }
-  
+
   setValue(value: string) {
     return (this.element as HTMLInputElement).value = value;
   }
-  
+
 
   render() {
     return this.compile(template, {

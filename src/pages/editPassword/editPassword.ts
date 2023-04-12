@@ -5,7 +5,6 @@ import { Input } from '../../components/input/input';
 import { DataField } from '../../components/dataField/dataField';
 import noAvavtarIcon from '../../../static/images/avatar_no.svg';
 
-import { Link } from "../../components/Link/link";
 import { LinkBack } from "../../components/linkBack/linkBack";
 
 import { withStore } from "../../utils/Store";
@@ -21,6 +20,9 @@ interface IEditProfileProps {
     fields: Block[];
     footer: Block[];
   };
+  display_name:string;
+  newPassword: string;
+  oldPassword: string;
 }
 
 export class EditPasswordBase extends Block<IEditProfileProps> {
@@ -71,7 +73,7 @@ export class EditPasswordBase extends Block<IEditProfileProps> {
     this.children.fields = fields;
 
     this.children.linkToProfile = new LinkBack({
-      to: '/profile',
+      to:'/profile',
       classes: 'link_back',
     });
 
@@ -90,7 +92,7 @@ export class EditPasswordBase extends Block<IEditProfileProps> {
     const data = getData(this.getContent()?.querySelector(".editProfile_info"));
 
     console.log(data);
-
+    
     await UserController.changePassword(data as ChangePasswordData);
   }
 
@@ -105,4 +107,4 @@ export class EditPasswordBase extends Block<IEditProfileProps> {
 
 const withUser = withStore((state) => ({ ...state.user }));
 
-export const EditPassword = withUser(EditPasswordBase);
+export const EditPassword = withUser(EditPasswordBase as unknown as typeof Block);

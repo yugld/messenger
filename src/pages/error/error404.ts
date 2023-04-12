@@ -3,14 +3,11 @@ import template from './error404.pug';
 
 import { Link } from "../../components/Link/link";
 
-interface Error404Props {
+/*interface Error404Props {
   title: string;
-}
+}*/
 
-export class Error404 extends Block<Error404Props> {
-  constructor(props: Error404Props) {
-    super(props);
-  }
+export class Error404 extends Block {
 
   init(): void {
     this.children.link = new Link({

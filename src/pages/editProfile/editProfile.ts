@@ -3,8 +3,6 @@ import template from './editProfile.pug';
 import { Button } from '../../components/button/button';
 import { Input } from '../../components/input/input';
 import { DataField } from '../../components/dataField/dataField';
-
-import { Link } from "../../components/Link/link";
 import { LinkBack } from "../../components/linkBack/linkBack";
 
 import { withStore } from "../../utils/Store";
@@ -21,6 +19,13 @@ interface IEditProfileProps {
     fields: Block[];
     footer: Block[];
   };
+  email:string;
+  login:string;
+  first_name:string;
+  second_name:string;
+  display_name:string;
+  phone:string;
+  avatar?: string;
 }
 
 export class EditProfileBase extends Block<IEditProfileProps> {
@@ -105,7 +110,7 @@ export class EditProfileBase extends Block<IEditProfileProps> {
     this.children.fields = fields;
 
     this.children.linkToProfile = new LinkBack({
-      to: '/profile',
+      to:'/profile',
       classes: 'link_back',
     });
 
@@ -122,7 +127,7 @@ export class EditProfileBase extends Block<IEditProfileProps> {
   async onSubmit(e: Event) {
     e.preventDefault();
     const data = getData(this.getContent()?.querySelector(".editProfile_info"));
-
+  
     console.log(data);
     await UserController.changeUser(data as ChangeUserData);
   }
@@ -137,4 +142,4 @@ export class EditProfileBase extends Block<IEditProfileProps> {
 
 const withUser = withStore((state) => ({ ...state.user }));
 
-export const EditProfile = withUser(EditProfileBase);
+export const EditProfile = withUser(EditProfileBase as unknown as typeof Block);
