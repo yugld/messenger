@@ -4,9 +4,11 @@
 
 ## Описание проекта
 
-Ссылка на [pull request](https://github.com/yugld/middle.messenger.praktikum.yandex/pull/5)
+Ссылка на [pull request](https://github.com/yugld/middle.messenger.praktikum.yandex/pull/6)
 
 Приложение развернуто на сервисе [netlify](https://meek-taiyaki-afa351.netlify.app)
+и на [render](https://messenger-cab0.onrender.com) с использованием Docker
+
 
 Макет приложения взят из задания [figma](https://www.figma.com/file/l909hSsb2cqiuzq1uCZGBJ/Chat_external_link-(Copy)?node-id=0%3A1&t=ru1DWbDG1YCChMBg-0)
 
@@ -15,3 +17,14 @@
 npm run build — запуск продакшен-сборки
 npm run dev — запуск в режиме разработки
 npm run start — запуск проекта в продакшн на 3000 порту
+npm run test — запуск тестов
+
+## Используемые технологии
+- Webpack
+- Pug
+- SCSS
+- Typescript
+- Express
+- Docker
+- Mocha, Chai
+

@@ -1,15 +1,14 @@
-import Block from "../../utils/Block";
-import template from "./chatsList.pug";
+import Block from '../../utils/Block';
+import template from './chatsList.pug';
+import router from '../../utils/Router';
+import { store, withStore } from '../../utils/Store';
 
-import router from "../../utils/Router";
-import { store } from "../../utils/Store";
-import { withStore } from "../../utils/Store";
-import { ChatInfo } from "../../api/ChatsAPI";
-import ChatsController from "../../controllers/ChatsController";
+import { ChatInfo } from '../../api/ChatsAPI';
+import ChatsController from '../../controllers/ChatsController';
 
-import { Chat } from "../chat";
-import { Link } from "../Link/link";
-import { Button } from "../button/button";
+import { Chat } from '../chat';
+import { Link } from '../Link/link';
+import { Button } from '../button/button';
 import { PopupCreate } from '../popupCreate/popup';
 
 interface ChatsListProps {
@@ -27,30 +26,30 @@ class ChatsListBase extends Block<ChatsListProps> {
     this.children.popupCreateChat = new PopupCreate({});
 
     this.children.linkToProfile = new Link({
-      to: "/profile",
-      label: "Мой профиль",
+      to: '/profile',
+      label: 'Мой профиль',
       classes: 'link_profile',
     });
 
     this.children.chats = this.createChats(this.props);
 
-    /*this.children.createChatInput = new Input({
+    /* this.children.createChatInput = new Input({
       type: "text",
       label: "Создать чат(введите название)",
       className: "create-chat",
       name: "create-chat",
-    });*/
+    }); */
 
     this.children.buttonCreateChat = new Button({
-      label: "Создать чат",
-      type: "submit",
-      classes: "button chatlist_create__button",
+      label: 'Создать чат',
+      type: 'submit',
+      classes: 'button chatlist_create__button',
       events: {
-          click: () => (this.children.popupCreateChat as PopupCreate).show(),
+        click: () => (this.children.popupCreateChat as PopupCreate).show(),
       },
     });
 
-    /*this.children.createChat = new Button({
+    /* this.children.createChat = new Button({
       classes: "button main-button",
       label: "Создать чат",
       events: {
@@ -62,26 +61,24 @@ class ChatsListBase extends Block<ChatsListProps> {
           await ChatsController.create(data);
         },
       },
-    });*/
+    }); */
   }
 
-  protected componentDidUpdate( oldProps: ChatsListProps, newProps: ChatsListProps ): boolean {
-    this.children.chats = this.createChats(newProps);
+  protected componentDidUpdate(_oldProps: ChatsListProps, _newProps: ChatsListProps): boolean {
+    this.children.chats = this.createChats(_newProps);
     return true;
   }
 
   private createChats(props: ChatsListProps) {
-    return props.chats.map((data) => {
-      return new Chat({
-        ...data,
-        avatar: `https://ya-praktikum.tech/api/v2/resources${data?.avatar}`,
-        events: {
-          click: () => {
-            ChatsController.selectChat(data.id);
-          },
+    return props.chats.map((data) => new Chat({
+      ...data,
+      avatar: `https://ya-praktikum.tech/api/v2/resources${data?.avatar}`,
+      events: {
+        click: () => {
+          ChatsController.selectChat(data.id);
         },
-      });
-    });
+      },
+    }));
   }
 
   protected render(): DocumentFragment {

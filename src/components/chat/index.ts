@@ -1,7 +1,7 @@
-import Block from "../../utils/Block";
-import template from "./chat.pug";
-import { withStore } from "../../utils/Store";
-import { ChatInfo } from "../../api/types";
+import Block from '../../utils/Block';
+import template from './chat.pug';
+import { withStore } from '../../utils/Store';
+import { ChatInfo } from '../../api/types';
 
 interface ChatProps {
   id: number;
@@ -29,7 +29,7 @@ class ChatBase extends Block<ChatProps> {
 
 export const withSelectedChat = withStore((state) => ({
   selectedChat: (state.chats || []).find(
-    ({ id }: ChatProps) => id === state.selectedChat
+    ({ id }: ChatProps) => id === state.selectedChat,
   ),
 }));
 

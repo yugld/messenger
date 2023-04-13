@@ -3,15 +3,13 @@ import template from './editProfile.pug';
 import { Button } from '../../components/button/button';
 import { Input } from '../../components/input/input';
 import { DataField } from '../../components/dataField/dataField';
+import { LinkBack } from '../../components/linkBack/linkBack';
 
-import { Link } from "../../components/Link/link";
-import { LinkBack } from "../../components/linkBack/linkBack";
-
-import { withStore } from "../../utils/Store";
-import UserController from "../../controllers/UserController";
+import { withStore } from '../../utils/Store';
+import UserController from '../../controllers/UserController';
 import { ChangeUserData } from '../../api/types';
-import { getData } from "../../utils/getData";
-import { EditAvatar } from "../../components/editAvatar/editAvatar";
+import { getData } from '../../utils/getData';
+import { EditAvatar } from '../../components/editAvatar/editAvatar';
 
 interface IEditProfileProps {
   title: string;
@@ -21,11 +19,17 @@ interface IEditProfileProps {
     fields: Block[];
     footer: Block[];
   };
+  email:string;
+  login:string;
+  first_name:string;
+  second_name:string;
+  display_name:string;
+  phone:string;
+  avatar?: string;
 }
 
 export class EditProfileBase extends Block<IEditProfileProps> {
   init() {
-
     this.children.avatar = new EditAvatar({});
 
     const fields = [
@@ -105,13 +109,13 @@ export class EditProfileBase extends Block<IEditProfileProps> {
     this.children.fields = fields;
 
     this.children.linkToProfile = new LinkBack({
-      to:'/profile',
+      to: '/profile',
       classes: 'link_back',
     });
 
     this.children.buttonSave = new Button({
       label: 'Сохранить',
-      type: "submit",
+      type: 'submit',
       classes: 'button main-button editProfile_button editProfile_button_saveData',
       events: {
         click: (e: Event) => this.onSubmit(e),
@@ -121,8 +125,8 @@ export class EditProfileBase extends Block<IEditProfileProps> {
 
   async onSubmit(e: Event) {
     e.preventDefault();
-    const data = getData(this.getContent()?.querySelector(".editProfile_info"));
-  
+    const data = getData(this.getContent()?.querySelector('.editProfile_info'));
+
     console.log(data);
     await UserController.changeUser(data as ChangeUserData);
   }
@@ -137,4 +141,4 @@ export class EditProfileBase extends Block<IEditProfileProps> {
 
 const withUser = withStore((state) => ({ ...state.user }));
 
-export const EditProfile = withUser(EditProfileBase);
+export const EditProfile = withUser(EditProfileBase as unknown as typeof Block);

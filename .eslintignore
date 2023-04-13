@@ -1,4 +1,6 @@
-/dist
+/*.js
 **/*.min.js
-/node_modules
+node_modules
+dist
+server
 /.parcel-cache

@@ -9,12 +9,12 @@ interface LinkProps extends PropsWithRouter {
   events?: Record<string, EventListenerOrEventListenerObject>;
 }
 
-class BaseLink extends Block<LinkProps> {
+export class BaseLink extends Block<LinkProps> {
   constructor(props: LinkProps) {
     super({
       ...props,
       events: {
-        click: () => this.navigate()
+        click: () => this.navigate(),
       },
     });
   }

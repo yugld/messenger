@@ -1,5 +1,5 @@
-import Block from "../../utils/Block";
-import template from "./message.pug";
+import Block from '../../utils/Block';
+import template from './message.pug';
 
 interface MessageProps {
   content: string;

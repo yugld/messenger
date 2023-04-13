@@ -4,11 +4,10 @@ import { DataField } from '../../components/dataField/dataField';
 
 import store, { withStore } from '../../utils/Store';
 import AuthController from '../../controllers/AuthController';
-import { Link } from "../../components/Link/link";
-import { LinkBack } from "../../components/linkBack/linkBack";
+import { Link } from '../../components/Link/link';
+import { LinkBack } from '../../components/linkBack/linkBack';
 import { Button } from '../../components/button/button';
-import { AvatarProfile } from "../../components/avatarProfile/avatarProfile";
-
+import { AvatarProfile } from '../../components/avatarProfile/avatarProfile';
 
 interface ProfileProps {
   title?: string;
@@ -28,7 +27,6 @@ interface ProfileProps {
 }
 
 class ProfileBase extends Block<ProfileProps> {
-
   constructor() {
     const state = store.getState();
     super(state.user || {});
@@ -82,7 +80,7 @@ class ProfileBase extends Block<ProfileProps> {
     this.children.fields = fields;
 
     this.children.linkToChats = new LinkBack({
-      to:'/messenger',
+      to: '/messenger',
       classes: 'link_back',
     });
 
@@ -106,19 +104,18 @@ class ProfileBase extends Block<ProfileProps> {
       events: {
         click: () => {
           AuthController.logout();
-        }
-      }
-    })
+        },
+      },
+    });
   }
-
 
   render() {
     return this.compile(template, {
-      name: this.props.display_name || "Anonym",
+      name: this.props.display_name || 'Anonym',
       avatar: this.props.avatar,
-      props: this.props, 
+      props: this.props,
     });
   }
 }
 
-export const Profile = withStore((state) => { return state.user || {};})(ProfileBase);
+export const Profile = withStore((state) => state.user || {})(ProfileBase as unknown as typeof Block);

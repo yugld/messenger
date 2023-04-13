@@ -8,21 +8,20 @@ import { SigninData } from '../../api/types';
 import AuthController from '../../controllers/AuthController';
 
 interface LoginProps {
-    title?: string;
-    classes?: string[];
-    url?: string;
-    children?: {
-        fields: Block[];
-        footer: Block[];
-    };
+  title?: string;
+  classes?: string[];
+  url?: string;
+  children?: {
+      fields: Block[];
+      footer: Block[];
+  };
 }
 
 export class Login extends Block<LoginProps> {
-
   constructor() {
     super({});
   }
-  
+
   init() {
     const fields = [
       new Input({
@@ -36,7 +35,7 @@ export class Login extends Block<LoginProps> {
             const loginL = document.querySelector(
               `#${this.children.fields[0].props.idInput}`,
             );
-            loginL?.classList.remove(ERROR_TEXT);
+            loginL?.classList.remove();
           },
         },
       }),
@@ -51,7 +50,7 @@ export class Login extends Block<LoginProps> {
             const loginL = document.querySelector(
               `#${this.children.fields[1].props.idInput}`,
             );
-            loginL?.classList.remove(ERROR_TEXT);
+            loginL?.classList.remove();
           },
         },
       }),
@@ -59,13 +58,13 @@ export class Login extends Block<LoginProps> {
     this.children.fields = fields;
 
     this.children.buttonEnter = new Button({
-        label: 'Войти',
-        classes: 'button login_form__btn',
-        type: 'submit',
-        events: {
-          click: () => this.onSubmit(),
-          },
-      });
+      label: 'Войти',
+      classes: 'button login_form__btn',
+      type: 'submit',
+      events: {
+        click: () => this.onSubmit(),
+      },
+    });
 
     this.children.link = new Link({
       label: 'Регистрация',
@@ -77,7 +76,7 @@ export class Login extends Block<LoginProps> {
   onSubmit() {
     const values = Object
       .values(this.children.fields)
-      .filter(child => child instanceof Input)
+      .filter((child) => child instanceof Input)
       .map((child) => ([
         child._element.childNodes[1].name,
         child._element.childNodes[1].value,
@@ -90,6 +89,6 @@ export class Login extends Block<LoginProps> {
   }
 
   render() {
-    return this.compile(template, { ...this.props, title: "Вход"});
+    return this.compile(template, { ...this.props, title: 'Вход' });
   }
 }

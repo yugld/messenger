@@ -1,5 +1,9 @@
 import Block from './Block';
 
+export interface BlockConstructable<P extends Record<string, any> = any> {
+  new (props: P): Block<P>;
+}
+
 function isEqual(lhs: string, rhs: string): boolean {
   return lhs === rhs;
 }
@@ -18,13 +22,14 @@ function render(query: string, block: Block) {
   return root;
 }
 
-class Route {
+export class Route {
   private block: Block | null = null;
 
   constructor(
     private pathname: string,
     private readonly blockClass: typeof Block,
-    private readonly query: string) {
+    private readonly query: string,
+  ) {
   }
 
   leave() {
@@ -40,15 +45,17 @@ class Route {
       this.block = new this.blockClass({});
 
       render(this.query, this.block);
-      return;
     }
   }
 }
 
 class Router {
   private static __instance: Router;
+
   private routes: Route[] = [];
+
   private currentRoute: Route | null = null;
+
   private history = window.history;
 
   constructor(private readonly rootQuery: string) {
@@ -61,7 +68,7 @@ class Router {
     Router.__instance = this;
   }
 
-  //регистрирует блок по пути в роут и возвращает себя —
+  // регистрирует блок по пути в роут и возвращает себя —
   // чтобы можно было выстроить в цепочку
   public use(pathname: string, block: typeof Block) {
     const route = new Route(pathname, block, this.rootQuery);
@@ -69,14 +76,15 @@ class Router {
 
     return this;
   }
-  //по событию onpopstate запускает приложение
+
+  // по событию onpopstate запускает приложение
   public start() {
     // Реагируем на изменения в адресной строке и вызываем перерисовку
     window.onpopstate = (event: PopStateEvent) => {
       const target = event.currentTarget as Window;
 
       this._onRoute(target.location.pathname);
-    }
+    };
 
     this._onRoute(window.location.pathname);
   }
@@ -97,15 +105,15 @@ class Router {
     route.render();
   }
 
-  //переходит на нужный роут и отображает нужный блок
+  // переходит на нужный роут и отображает нужный блок
   public go(pathname: string) {
     this.history.pushState({}, '', pathname);
-  
+
     this._onRoute(pathname);
   }
 
-  //возвращает в прошлое состояние и показывает блок, 
-  //соответствующий тому состоянию
+  // возвращает в прошлое состояние и показывает блок,
+  // соответствующий тому состоянию
   public back() {
     this.history.back();
   }
@@ -115,7 +123,7 @@ class Router {
   }
 
   private getRoute(pathname: string) {
-    return this.routes.find(route => route.match(pathname));
+    return this.routes.find((route) => route.match(pathname));
   }
 }
 

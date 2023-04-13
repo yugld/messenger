@@ -10,37 +10,37 @@ export interface PopupProps {
 }
 
 export class Popup extends Block<PopupProps> {
-    constructor(props: PopupProps) {
-        super(props);
-    }
+  constructor(props: PopupProps) {
+    super(props);
+  }
 
-    init() {
-        this.children.buttonClose = new ButtonClose({
-            events: {
-                click: () => this.hide(),
-            },
-        });
+  init() {
+    this.children.buttonClose = new ButtonClose({
+      events: {
+        click: () => this.hide(),
+      },
+    });
 
-        this.children.button = new Button({
-            label: 'Поменять',
-            classes: 'button popup_button',
-            type: 'submit',
-            events: {
-                click: (e: Event) => this.onSubmit(e),
-            },
-        });
-    }
+    this.children.button = new Button({
+      label: 'Поменять',
+      classes: 'button popup_button',
+      type: 'submit',
+      events: {
+        click: (e: Event) => this.onSubmit(e),
+      },
+    });
+  }
 
-    async onSubmit(e: Event) {
-        e.preventDefault();
-        const form = new FormData(document.querySelector('.popup_form') as HTMLFormElement);
-        if (form.get('avatar')) {
-            await UserController.changeAvatar(form);
-            this.hide();
-        }
+  async onSubmit(e: Event) {
+    e.preventDefault();
+    const form = new FormData(document.querySelector('.popup_form') as HTMLFormElement);
+    if (form.get('avatar')) {
+      await UserController.changeAvatar(form);
+      this.hide();
     }
+  }
 
-    render() {
-        return this.compile(template, {});
-    }
+  render() {
+    return this.compile(template, {});
+  }
 }
