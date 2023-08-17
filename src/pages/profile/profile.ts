@@ -36,7 +36,7 @@ class ProfileBase extends Block<ProfileProps> {
     AuthController.fetchUser();
 
     this.children.avatarProfile = new AvatarProfile({
-      avatar: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`,
+      avatar: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`
     });
 
     const fields = [
