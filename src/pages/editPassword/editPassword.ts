@@ -31,9 +31,8 @@ export class EditPasswordBase extends Block<IEditProfileProps> {
   }
 
   init() {
-    const fields = [
-      new DataField({
-        label: 'Поле',
+    this.children.oldPassword = new DataField({
+        label: '',
         name: 'Старый пароль',
         classes: 'data',
         fieldValue: new Input({
@@ -41,11 +40,11 @@ export class EditPasswordBase extends Block<IEditProfileProps> {
           idInput: 'oldPassword',
           type: 'password',
           valueInput: this.props.oldPassword,
-          inputClasses: '',
+          inputClasses: ''
         }),
-      }),
-      new DataField({
-        label: 'Поле',
+      });
+      this.children.newPassword = new DataField({
+        label: '',
         name: 'Новый пароль',
         classes: 'data',
         fieldValue: new Input({
@@ -53,11 +52,11 @@ export class EditPasswordBase extends Block<IEditProfileProps> {
           idInput: 'newPassword',
           type: 'password',
           valueInput: this.props.newPassword,
-          inputClasses: '',
-        }),
-      }),
-      new DataField({
-        label: 'Поле',
+          inputClasses: ''
+        })
+      });
+      this.children.repeatNewPassword = new DataField({
+        label: '',
         name: 'Повторите новый пароль',
         classes: 'data',
         fieldValue: new Input({
@@ -65,11 +64,9 @@ export class EditPasswordBase extends Block<IEditProfileProps> {
           idInput: 'passwordYet',
           type: 'password',
           valueInput: this.props.newPassword,
-          inputClasses: '',
-        }),
-      }),
-    ];
-    this.children.fields = fields;
+          inputClasses: ''
+        })
+      });
 
     this.children.linkToProfile = new LinkBack({
       to: '/profile',

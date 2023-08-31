@@ -22,7 +22,7 @@ export class DataField extends Block<IDataFieldProps> {
       idInput: this.props.idInput,
       type: this.props.type,
       name: this.props.name,
-      value: this.props.value,
+      value: this.props.value
     });
   }
 }
