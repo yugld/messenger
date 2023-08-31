@@ -164,6 +164,6 @@ export class SignUp extends Block<SignUpProps> {
   }
 
   render() {
-    return this.compile(template, { title: 'Регистрация' });
+    return this.compile(template, { title: 'Регистрация', fields: this.children.fields });
   }
 }

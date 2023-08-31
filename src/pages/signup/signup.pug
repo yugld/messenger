@@ -2,7 +2,8 @@
     .sign-up_form
         h1.sign-up_form__title=title
         form.sign-up_form__inputs.fields
-            | !{fields}
+            each field in fields
+                | !{ field }
         .singin_form__buttons
             | !{buttonSignup}
             | !{link}
