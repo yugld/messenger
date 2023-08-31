@@ -19,12 +19,12 @@ interface IEditProfileProps {
     fields: Block[];
     footer: Block[];
   };
-  email:string;
-  login:string;
-  first_name:string;
-  second_name:string;
-  display_name:string;
-  phone:string;
+  email: string;
+  login: string;
+  first_name: string;
+  second_name: string;
+  display_name: string;
+  phone: string;
   avatar?: string;
 }
 
@@ -32,81 +32,78 @@ export class EditProfileBase extends Block<IEditProfileProps> {
   init() {
     this.children.avatar = new EditAvatar({});
 
-    const fields = [
-      new DataField({
-        label: 'Поле',
-        name: 'Почта',
-        classes: 'data',
-        fieldValue: new Input({
-          label: '',
-          idInput: 'email',
-          type: 'text',
-          valueInput: this.props.email,
-          inputClasses: '',
-        }),
+    this.children.email = new DataField({
+      label: '',
+      name: 'Почта',
+      classes: 'data',
+      fieldValue: new Input({
+        label: '',
+        idInput: 'email',
+        type: 'text',
+        valueInput: this.props.email,
+        inputClasses: '',
       }),
-      new DataField({
-        label: 'Поле',
-        name: 'Логин',
-        classes: 'data',
-        fieldValue: new Input({
-          label: '',
-          idInput: 'login',
-          type: 'text',
-          valueInput: this.props.login,
-          inputClasses: '',
-        }),
+    });
+    this.children.login = new DataField({
+      label: '',
+      name: 'Логин',
+      classes: 'data',
+      fieldValue: new Input({
+        label: '',
+        idInput: 'login',
+        type: 'text',
+        valueInput: this.props.login,
+        inputClasses: '',
       }),
-      new DataField({
-        label: 'Поле',
-        name: 'Имя',
-        classes: 'data',
-        fieldValue: new Input({
-          label: '',
-          idInput: 'first_name',
-          type: 'text',
-          valueInput: this.props.first_name,
-          inputClasses: '',
-        }),
+    });
+    this.children.first_name = new DataField({
+      label: '',
+      name: 'Имя',
+      classes: 'data',
+      fieldValue: new Input({
+        label: '',
+        idInput: 'first_name',
+        type: 'text',
+        valueInput: this.props.first_name,
+        inputClasses: '',
       }),
-      new DataField({
-        label: 'Поле',
-        name: 'Фамилия',
-        classes: 'data',
-        fieldValue: new Input({
-          label: '',
-          idInput: 'second_name',
-          type: 'text',
-          valueInput: this.props.second_name,
-          inputClasses: '',
-        }),
+    });
+    this.children.second_name = new DataField({
+      label: '',
+      name: 'Фамилия',
+      classes: 'data',
+      fieldValue: new Input({
+        label: '',
+        idInput: 'second_name',
+        type: 'text',
+        valueInput: this.props.second_name,
+        inputClasses: '',
       }),
-      new DataField({
-        label: 'Поле',
-        name: 'Имя в чате',
-        classes: 'data',
-        fieldValue: new Input({
-          label: '',
-          idInput: 'display_name',
-          type: 'text',
-          valueInput: this.props.display_name,
-          inputClasses: '',
-        }),
+    });
+    this.children.display_name = new DataField({
+      label: '',
+      name: 'Имя в чате',
+      classes: 'data',
+      fieldValue: new Input({
+        label: '',
+        idInput: 'display_name',
+        type: 'text',
+        valueInput: this.props.display_name,
+        inputClasses: '',
       }),
-      new DataField({
-        label: 'Поле',
-        name: 'Телефон',
-        classes: 'data',
-        fieldValue: new Input({
-          label: '',
-          idInput: 'phone',
-          type: 'text',
-          valueInput: this.props.phone,
-          inputClasses: '',
-        }),
+    });
+    this.children.phone = new DataField({
+      label: '',
+      name: 'Телефон',
+      classes: 'data',
+      fieldValue: new Input({
+        label: '',
+        idInput: 'phone',
+        type: 'text',
+        valueInput: this.props.phone,
+        inputClasses: '',
       }),
-    ];
-    this.children.fields = fields;
+    });
 
     this.children.linkToProfile = new LinkBack({
       to: '/profile',

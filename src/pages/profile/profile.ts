@@ -17,12 +17,12 @@ interface ProfileProps {
     fields: Block[];
     footer: Block[];
   };
-  email:string;
-  login:string;
-  first_name:string;
-  second_name:string;
-  display_name:string;
-  phone:string;
+  email: string;
+  login: string;
+  first_name: string;
+  second_name: string;
+  display_name: string;
+  phone: string;
   avatar?: string;
 }
 
@@ -39,64 +39,60 @@ class ProfileBase extends Block<ProfileProps> {
       avatar: `https://ya-praktikum.tech/api/v2/resources${this.props.avatar}`
     });
 
-    const fields = [
-      new DataField({
-        label: 'Поле',
-        name: 'Почта',
-        value: this.props.email,
-        classes: 'data',
-      }),
-      new DataField({
-        label: 'Поле',
-        name: 'Логин',
-        value: this.props.login,
-        classes: 'data',
-      }),
-      new DataField({
-        label: 'Поле',
-        name: 'Имя',
-        value: this.props.first_name,
-        classes: 'data',
-      }),
-      new DataField({
-        label: 'Поле',
-        name: 'Фамилия',
-        value: this.props.second_name,
-        classes: 'data',
-      }),
-      new DataField({
-        label: 'Поле',
-        name: 'Имя в чате',
-        value: this.props.display_name,
-        classes: 'data',
-      }),
-      new DataField({
-        label: 'Поле',
-        name: 'Телефон',
-        value: this.props.phone,
-        classes: 'data',
-      }),
-    ];
-    this.children.fields = fields;
+    this.children.email = new DataField({
+      label: 'Поле',
+      name: 'Почта',
+      value: this.props.email,
+      classes: 'data',
+    });
+    this.children.login = new DataField({
+      label: 'Поле',
+      name: 'Логин',
+      value: this.props.login,
+      classes: 'data',
+    });
+    this.children.first_name = new DataField({
+      label: 'Поле',
+      name: 'Имя',
+      value: this.props.first_name,
+      classes: 'data',
+    });
+    this.children.second_name = new DataField({
+      label: 'Поле',
+      name: 'Фамилия',
+      value: this.props.second_name,
+      classes: 'data',
+    });
+    this.children.display_name = new DataField({
+      label: 'Поле',
+      name: 'Имя в чате',
+      value: this.props.display_name,
+      classes: 'data',
+    });
+    this.children.phone = new DataField({
+      label: 'Поле',
+      name: 'Телефон',
+      value: this.props.phone,
+      classes: 'data',
+    });
 
     this.children.linkToChats = new LinkBack({
       to: '/messenger',
       classes: 'link_back',
     });
 
-    const links = [
-      new Link({
-        to: '/editprofile',
-        label: 'Изменить данные',
-        classes: 'link profile_buttons__changeData',
-      }),
-      new Link({
-        to: '/editpassword',
-        label: 'Изменить пароль',
-        classes: 'link profile_buttons__changePassword',
-      }),
-    ];
-    this.children.links = links;
+    this.children.linkEditProfile = new Link({
+      to: '/editprofile',
+      label: 'Изменить данные',
+      classes: 'link profile_buttons__changeData',
+    });
+    
+    this.children.linkEditPassword = new Link({
+      to: '/editpassword',
+      label: 'Изменить пароль',
+      classes: 'link profile_buttons__changePassword',
+    });
+
 
     this.children.exitLink = new Button({
       label: 'Выйти',
