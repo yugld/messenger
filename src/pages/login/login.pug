@@ -2,7 +2,8 @@
     .login_form
         h1.login_form__title= title 
         form.login_form__inputs 
-            | !{fields}
+            each field in fields
+                | !{ field }
         .login_form__buttons
             | !{buttonEnter}
             | !{link}
