@@ -33,13 +33,6 @@ class ChatsListBase extends Block<ChatsListProps> {
 
     this.children.chats = this.createChats(this.props);
 
-    /* this.children.createChatInput = new Input({
-      type: "text",
-      label: "Создать чат(введите название)",
-      className: "create-chat",
-      name: "create-chat",
-    }); */
-
     this.children.buttonCreateChat = new Button({
       label: 'Создать чат',
       type: 'submit',
@@ -49,19 +42,6 @@ class ChatsListBase extends Block<ChatsListProps> {
       },
     });
 
-    /* this.children.createChat = new Button({
-      classes: "button main-button",
-      label: "Создать чат",
-      events: {
-        click: async () => {
-          const data = (
-            document.querySelector(".create-chat .input") as HTMLInputElement
-          ).value;
-
-          await ChatsController.create(data);
-        },
-      },
-    }); */
   }
 
   protected componentDidUpdate(_oldProps: ChatsListProps, _newProps: ChatsListProps): boolean {
